@@ -94,7 +94,7 @@
  <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link " href="{{ route('welcome') }}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
             </a>
@@ -123,6 +123,11 @@
                     <li>
                         <a href="{{ route('formulario.fadiga') }}">
                         <i class="bi bi-circle"></i><span>Fadiga</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('formulario.pse') }}">
+                        <i class="bi bi-circle"></i><span>PSE</span>
                         </a>
                     </li>
                 </ul>

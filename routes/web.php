@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormularioAtleta;
 use App\Http\Controllers\FormularioDadosBiologicos;
@@ -7,15 +8,24 @@ use App\Http\Controllers\FormularioMenstruacion;
 use App\Http\Controllers\FormularioFadiga;
 use App\Http\Controllers\FormularioUsuario;
 use App\Http\Controllers\FormularioPSE;
+use App\Http\Controllers\Redirect\RedirectController;
+
+Route::get('/redirect',[RedirectController::class, 'dashboard']);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 //Rutas de formularios
 Route::get('/', function () { return view('welcome');})->name('welcome');
-Route::get('/formulario', [FormularioAtleta::class, 'index'])->name('formulario.atleta');//Ruta de Formulario de datos de los atletas
-Route::get('/formularioDadosBiologicos', [FormularioDadosBiologicos::class, 'index'])->name('formulario.biologico');//Ruta de Formulario de dados Biologicos
-Route::get('/formularioMenstruacion', [FormularioMenstruacion::class, 'index'])->name('formulario.mestruacion');//Ruta de Formulario de dados de la Menstruacion
-Route::get('/formularioFadiga', [FormularioFadiga::class, 'index'])->name('formulario.fadiga');//Ruta de Formulario de dados Fadiga
-Route::get('/formularioPSE', [FormularioPSE::class, 'index'])->name('formulario.pse');//Ruta de formularios de PSE
 
+//Rutas do CRUD do formulario de atletas
 
-//Ruta de perfiles
-Route::get('/usuario', [FormularioUsuario::class, 'index'])->name('usuario');//Perfiles admin (comissao tecnica)
+require __DIR__.'/auth.php';

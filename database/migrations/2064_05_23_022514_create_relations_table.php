@@ -15,17 +15,19 @@ return new class extends Migration
         Schema::table('users', function ($table){
             $table->foreign('position_id')->references('id')->on('positions')->onUpdate('cascade');
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('cascade');
-            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade');
         });
-
         Schema::table('positions', function ($table){
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('cascade');
         });
-
         Schema::table('teams', function ($table){
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('cascade');
         });
-        //eloquent
+        Schema::table('databiologies', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
+        Schema::table('menstrualcalendars', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
         Schema::table('users_has_teams', function ($table){
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onUpdate('cascade');

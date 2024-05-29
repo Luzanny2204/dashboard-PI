@@ -48,8 +48,10 @@
                             @error('permissions')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
-                            <button type="submit" class="btn btn-block bg-gradient-success btn-lg">Crear rol</button>
-                            <a href="{{route('admin.roles.index')}}" class="btn btn-block bg-gradient-danger btn-lg">Cancelar</a>
+                           <div class="mt-3">
+                           <a href="{{route('admin.roles.index')}}" class="btn btn-secondary bg-gradient-danger btn-lg">Cancelar</a>
+                            <button type="submit" class="btn btn-primary bg-gradient-success mx-2 btn-lg">Crear rol</button>
+                           </div>
                         </form>
                     </div>
                 </div>

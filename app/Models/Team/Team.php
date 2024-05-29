@@ -26,7 +26,7 @@ class Team extends Model
 
      /*Relacion de muchos a muchos*/
      public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'users_has_teams');
     }
 
 }

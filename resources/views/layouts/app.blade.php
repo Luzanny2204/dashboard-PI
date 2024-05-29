@@ -41,6 +41,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.js"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -57,12 +59,7 @@
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- Final del Logo -->
-        <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Busqueda" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-        </div><!-- End Search Bar -->
+        
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
             <li class="nav-item d-block d-lg-none">
@@ -72,7 +69,7 @@
             </li><!-- End Search Icon-->
             <li class="nav-item dropdown pe-3">
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="https://ui-avatars.com/api/?name={{ substr(auth()->user()->name, 0, 1)}}&color=7F9CF5&background=EBF4FF" alt="Profile" class="rounded-circle">
+                    <img src="https://ui-avatars.com/api/?name={{ substr(auth()->user()->name, 0, 1)}}&color=FFFFFF&background=4154f1" alt="Profile" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{\Auth::user()->name}}</span>
                 </a><!-- End Profile Iamge Icon -->
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -84,12 +81,7 @@
                     <hr class="dropdown-divider">
                     </li>
 
-                    <li>
-                    <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                        <i class="bi bi-person"></i>
-                        <span>Perfil</span>
-                    </a>
-                    </li>
+                   
                     <li>
                     <hr class="dropdown-divider">
                     </li>
@@ -113,7 +105,7 @@
         <li class="nav-item">
             <a class="nav-link " href="{{route('admin.dashboard')}}">
             <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
+            <span>Panel Administrativo</span>
             </a>
         </li>
 
@@ -122,15 +114,6 @@
             <a class="nav-link " href="{{route('admin.states.index')}}">
             <i class="bi bi-grid"></i>
             <span>Estados</span>
-            </a>
-        </li>
-        @endcan
-
-        @can('admin.posts.index')
-        <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.posts.index')}}">
-            <i class="bi bi-grid"></i>
-            <span>Cargos</span>
             </a>
         </li>
         @endcan
@@ -144,73 +127,51 @@
         </li>
         @endcan
 
+        @can('admin.positions.index')
+            <li class="nav-item">
+                <a class="nav-link " href="{{route('admin.positions.index')}}">
+                <i class="bi bi-grid"></i>
+                <span>Posiciones J.G</span>
+                </a>
+            </li>
+        @endcan
+
+        @can('admin.teams.index')
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Formularios</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link " href="{{route('admin.teams.index')}}">
+            <i class="bi bi-grid"></i>
+            <span>Equipos</span>
             </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a  href="#">
-                        <i class="bi bi-circle"></i><span> Atleta-Infomação Geral</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <i class="bi bi-circle"></i><span>Dados Biologicos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <i class="bi bi-circle"></i><span>Menstruação</span>
-                        </a>
-                    </li>
-                </ul>
         </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-layout-text-window-reverse"></i><span>Tablas e Graficos</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="tables-general.html">
-                    <i class="bi bi-circle"></i><span>General</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tables-general.html">
-                    <i class="bi bi-circle"></i><span>Individual</span>
-                    </a>
-                </li>
-            </ul>
-    </li>
-    <li class="nav-heading">Paginas adicionales</li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-        <i class="bi bi-person"></i>
-        <span>Perfil</span>
-        </a>
-    </li>
+        @endcan
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-        <i class="bi bi-envelope"></i>
-        <span>Contatos</span>
-        </a>
-    </li>
+        @can('admin.users.index')
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('admin.users.index')}}">
+            <i class="bi bi-grid"></i>
+            <span>Usuarios</span>
+            </a>
+        </li>
+        @endcan
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-        <i class="bi bi-card-list"></i>
-        <span>Cadastra-se</span>
-        </a>
-    </li>
+        @can('admin.databiologies.index')
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('admin.databiologies.index')}}">
+            <i class="bi bi-grid"></i>
+            <span>Datos biológicos</span>
+            </a>
+        </li>
+        @endcan
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" onclick="document.getElementById('cerrar').submit()" href="#">
-        <i class="bi bi-box-arrow-in-right"></i>
-        <span>Cerrar sesión</span>
-        </a>
-    </li>
+        @can('admin.menstrualcalendars.index')
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('admin.menstrualcalendars.index')}}">
+            <i class="bi bi-grid"></i>
+            <span>Calendario menstrual</span>
+            </a>
+        </li>
+        @endcan
+
     </ul>
 </aside>
 <main id="main" class="main">
@@ -229,6 +190,12 @@
   </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir el JS de Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>
@@ -238,11 +205,14 @@
   <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
   <script src="{{asset('assets/js/main.js')}}"></script>
-
+  @include('components.flash_alert')
   <script>
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
-    })
+    });
+    $('.accordionExample').collapse();
   </script>
+
+  @yield('script')
 </body>
 </html>

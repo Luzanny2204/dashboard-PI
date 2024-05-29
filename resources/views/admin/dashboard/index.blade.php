@@ -1,162 +1,168 @@
 @extends('layouts.app')
 @section('title','Panel administrativo')
 @section('content')
+@if(\Auth::user()->can('admin.dashboard'))
+    <div class="pagetitle">
+        <h1>Panel Administravo</h1>
+    </div>
 
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-xxl-4 col-md-6 mb-4">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Jugadores (Atletas | Hoje)</h5>
 
-
-<div class="pagetitle">
-    <h1>Admin Dashboard</h1>
-    <nav>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-    </nav>
-</div><!-- End Page Title -->
-
-<section class="section dashboard">
-    <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-            <div class="row">
-
-                <!-- Sales Card -->
-                <div class="col-xxl-4 col-md-6 mb-4">
-                    <div class="card info-card sales-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Atletas <span>| Hoje</span></h5>
-
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6>145</h6>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{$countPlayers}}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Sales Card -->
+                    </div><!-- End Sales Card -->
 
-                <!-- Revenue Card -->
-                <div class="col-xxl-4 col-md-6 mb-4">
-                    <div class="card info-card revenue-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Equipes</h5>
+                    <!-- Revenue Card -->
+                    <div class="col-xxl-4 col-md-6 mb-4">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Equipos (equipes)</h5>
 
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6>8</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- End Revenue Card -->
-
-                <!-- Customers Card -->
-                <div class="col-xxl-4 col-xl-12 mb-4">
-                    <div class="card info-card customers-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Comissão</h5>
-
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6>1244</h6>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{$countTeams}}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Customers Card -->
+                    </div><!-- End Revenue Card -->
 
-                <!-- Reports -->
-                <div class="col-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Reportes Gerales <span>| Hoje</span></h5>
+                    <!-- Customers Card -->
+                    <!-- <div class="col-xxl-4 col-xl-12 mb-4">
+                        <div class="card info-card customers-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Comissão</h5>
 
-                            <!-- Line Chart -->
-                            <div id="reportsChart"></div>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>1244</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- End Customers Card -->
 
-                            <script>
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    new ApexCharts(document.querySelector("#reportsChart"), {
-                                        series: [{
-                                            name: 'Sales',
-                                            data: [31, 40, 28, 51, 42, 82, 56],
-                                        }, {
-                                            name: 'Revenue',
-                                            data: [11, 32, 45, 32, 34, 52, 41]
-                                        }, {
-                                            name: 'Customers',
-                                            data: [15, 11, 32, 18, 9, 24, 11]
-                                        }],
-                                        chart: {
-                                            height: 350,
-                                            type: 'area',
-                                            toolbar: {
-                                                show: false
-                                            },
-                                        },
-                                        markers: {
-                                            size: 4
-                                        },
-                                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                        fill: {
-                                            type: "gradient",
-                                            gradient: {
-                                                shadeIntensity: 1,
-                                                opacityFrom: 0.3,
-                                                opacityTo: 0.4,
-                                                stops: [0, 90, 100]
+                    <!-- Reports -->
+                    <div class="col-12 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Jugadores por Posición(Reportes Gerales <span>| Hoje</span>)</h5>
+                                <div id="reportsChart"></div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", () => {
+                                        var positionsData = @json($positionsData);
+
+                                        // Generar colores aleatorios
+                                        function getRandomColor() {
+                                            var letters = '0123456789ABCDEF';
+                                            var color = '#';
+                                            for (var i = 0; i < 6; i++) {
+                                                color += letters[Math.floor(Math.random() * 16)];
                                             }
-                                        },
-                                        dataLabels: {
-                                            enabled: false
-                                        },
-                                        stroke: {
-                                            curve: 'smooth',
-                                            width: 2
-                                        },
-                                        xaxis: {
-                                            type: 'datetime',
-                                            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                                        },
-                                        tooltip: {
-                                            x: {
-                                                format: 'dd/MM/yy HH:mm'
-                                            },
+                                            return color;
                                         }
-                                    }).render();
-                                });
-                            </script>
-                            <!-- End Line Chart -->
 
+                                        var positionColors = positionsData.map(() => getRandomColor());
+
+                                        new ApexCharts(document.querySelector("#reportsChart"), {
+                                            series: [{
+                                                name: 'Users by Position',
+                                                data: positionsData.map((data, index) => ({
+                                                    x: data.x,
+                                                    y: data.y,
+                                                    fillColor: positionColors[index]
+                                                }))
+                                            }],
+                                            chart: {
+                                                height: 350,
+                                                type: 'bar',
+                                                toolbar: {
+                                                    show: false
+                                                }
+                                            },
+                                            plotOptions: {
+                                                bar: {
+                                                    horizontal: false,
+                                                    columnWidth: '55%',
+                                                    endingShape: 'rounded'
+                                                }
+                                            },
+                                            dataLabels: {
+                                                enabled: false
+                                            },
+                                            stroke: {
+                                                show: true,
+                                                width: 2,
+                                                colors: ['transparent']
+                                            },
+                                            xaxis: {
+                                                categories: positionsData.map(data => data.x),
+                                                title: {
+                                                    text: 'Position'
+                                                }
+                                            },
+                                            yaxis: {
+                                                title: {
+                                                    text: 'Number of Users'
+                                                }
+                                            },
+                                            fill: {
+                                                opacity: 1
+                                            },
+                                            tooltip: {
+                                                y: {
+                                                    formatter: function (val) {
+                                                        return val + " users";
+                                                    }
+                                                }
+                                            }
+                                        }).render();
+                                    });
+                                </script>
+                            </div>
                         </div>
                     </div>
-                </div><!-- End Reports -->
 
-            </div>
-        </div><!-- End Left side columns -->
+                    <!-- End Reports -->
 
-        <!-- Right side columns -->
-        <div class="col-lg-4">
+                </div>
+            </div><!-- End Left side columns -->
 
-            <!-- Comissão Esportiva -->
-            <div class="card">
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+
+                <!-- Comissão Esportiva -->
+                <div class="card">
                 <div class="card-body pb-0">
-                    <h5 class="card-title">Comissão Esportiva<span>| Geral</span></h5>
+                    <h5 class="card-title">Usuario por Roles (Comissão Esportiva<span>| Geral</span>)</h5>
 
                     <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
                     <script>
                         document.addEventListener("DOMContentLoaded", () => {
+                            var rolesData = @json($rolesData);
                             echarts.init(document.querySelector("#trafficChart")).setOption({
                                 tooltip: {
                                     trigger: 'item'
@@ -184,70 +190,153 @@
                                     labelLine: {
                                         show: false
                                     },
-                                    data: [{
-                                        value: 1048,
-                                        name: 'Treinadores Esportivos'
-                                    },
-                                    {
-                                        value: 735,
-                                        name: 'Nutricionistas'
-                                    },
-                                    {
-                                        value: 580,
-                                        name: 'Psicologos'
-                                    },
-                                    {
-                                        value: 484,
-                                        name: 'Fisioterapeutas'
-                                    },
-                                    ]
+                                    data: rolesData
                                 }]
                             });
                         });
                     </script>
-
                 </div>
-            </div><!-- End Website Traffic -->
 
-        </div><!-- End Right side columns -->
+                </div><!-- End Website Traffic -->
 
-    </div>
-</section>
+            </div><!-- End Right side columns -->
 
-<!-- Dados Atletas -->
-<section class="section">
-    <div class="row">
-        <div class="col-12">
-            <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                    <h5 class="card-title">Dados Atletas</h5>
+        </div>
+    </section>
 
-                    <table class="table table-borderless datatable">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Posição</th>
-                                <th scope="col">Equipe</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"><a href="#">#2644</a></th>
-                                <td>Raheem Lehner</td>
-                                <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                <td>$165</td>
-                            </tr>
-                            <!-- Agrega más filas según sea necesario -->
-                        </tbody>
-                    </table>
+   
+    <!-- <section class="section">
+        <div class="row">
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Dados Atletas</h5>
+
+                        <table class="table table-borderless datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Posição</th>
+                                    <th scope="col">Equipe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><a href="#">#2644</a></th>
+                                    <td>Raheem Lehner</td>
+                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                                    <td>$165</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+    </section> -->
+
+    @elseif(\Auth::user()->hasRole('Jugador'))
+
+    <div class="pagetitle">
+        <h1>Panel Administravo</h1>
+        
     </div>
-</section><!-- End Dados Atletas -->
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
 
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
+                <img src="https://ui-avatars.com/api/?name={{ substr(auth()->user()->name, 0, 1)}}&color=FFFFFF&background=4154f1" alt="Profile" class="rounded-circle">
+                <h2>{{\Auth::user()->name}}</h2>
+                <h3>
+                        @foreach (\Auth::user()->roles as $role)
+                            {{ $role->name }}
+                            @if (!$loop->last)
+                                ,
+                            @endif
+                        @endforeach
+                    </h3>
+                <div class="social-links mt-2">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+                </div>
+            </div>
+            </div>
 
+            <div class="col-xl-8">
 
+            <div class="card">
+                <div class="card-body pt-3">
+                <!-- Bordered Tabs -->
+                <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
+
+                    <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab">Detalle del Perfil</button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-4">
+                    <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Nombre</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->name}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Correo</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->email}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Estado</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->state->name}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Equipo</div>
+                        <div class="col-lg-9 col-md-8">
+                        @if(\Auth::user()->teams->isNotEmpty())
+                            @foreach(\Auth::user()->teams as $team)
+                                {{ $team->name }}{{ !$loop->last ? ',' : '' }}
+                            @endforeach
+                        @else
+                            Sin equipo
+                        @endif
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Posición</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->position->name ?? 'Sin posición'}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Altura</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->height ?? 'Sin la altura'}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Peso</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->weight ?? 'Sin el peso'}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Teléfeno</div>
+                        <div class="col-lg-9 col-md-8">{{\Auth::user()->phone ?? 'Sin el teléfono'}}</div>
+                    </div>
+                    
+
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+    @endif
 @endsection

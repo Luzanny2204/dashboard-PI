@@ -23,7 +23,6 @@ return new class extends Migration
             //Relaciones Primera parte
             $table->bigInteger('position_id')->nullable()->unsigned();//posicion
             $table->bigInteger('state_id')->nullable()->unsigned();//estado
-            $table->bigInteger('post_id')->nullable()->unsigned();//Cargo
 
             $table->rememberToken();
             $table->timestamps();

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Posts;
+namespace App\Http\Requests\Admin\Positions;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostsCreateRequest extends FormRequest
+class PositionsCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,7 @@ class PostsCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'state_id' => 'required',
         ];
     }
 
@@ -30,13 +31,15 @@ class PostsCreateRequest extends FormRequest
     {
         return [
             'name' => 'Nombre',
+            'state_id' => 'Estado',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'El nombre del cargo es obligatorio',
+            'name.required' => 'El nombre de la posición es obligatorio',
+            'state_id.required' => 'El estado es obligatorio',
         ];
     }
 }

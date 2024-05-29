@@ -4,8 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\DataBiology\Databiology;
+use App\Models\MenstrualCalendar\Menstrualcalendar;
 use App\Models\Position\Position;
-use App\Models\Post\Post;
 use App\Models\State\State;
 use App\Models\Team\Team;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,7 +34,6 @@ class User extends Authenticatable
         'phone',
         'position_id',
         'state_id',
-        'post_id',
     ];
 
     /**
@@ -66,13 +66,21 @@ class User extends Authenticatable
         return $this->belongsTo(Position::class);
     }
 
-     //Relacion directa 
-     public function post(){
-        return $this->belongsTo(Post::class);
-    }
 
     /*Relacion de muchos a muchos belongsToMany */
     public function teams(){
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class,'users_has_teams');
+    }
+
+    //Relacion Inversa
+    public function databiologies(){
+        //return $this->hasMany('App\Models\User', 'state_id');
+        return $this->hasMany(Databiology::class);
+    }
+
+    //Relacion Inversa
+    public function menstrualcalendars(){
+        //return $this->hasMany('App\Models\User', 'state_id');
+        return $this->hasMany(Menstrualcalendar::class);
     }
 }

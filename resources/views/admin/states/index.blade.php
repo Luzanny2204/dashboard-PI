@@ -15,6 +15,7 @@
 <section class="section">
     <div class="row">
         <div class="col-12">
+            @can('admin.states.create')
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createStates">
                 Crear estados
             </button>
@@ -49,6 +50,7 @@
                     </div>
                 </div>
             </div>
+            @endcan
         </div>
         <div class="col-12 mt-5">
             <div class="card recent-sales overflow-auto">

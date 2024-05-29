@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('menstrualcalendars', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->date('last_period');
+            $table->string('duration');
+            $table->longText('symptoms');
+            $table->string('cervical_flux');
+            $table->string('sexual_activity');
+            $table->bigInteger('user_id')->nullable()->unsigned();//estado
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('menstrualcalendars');
     }
 };

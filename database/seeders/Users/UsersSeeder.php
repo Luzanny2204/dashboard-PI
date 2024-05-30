@@ -37,7 +37,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> 1,
             'state_id'=> 1,
-        ])->assignRole('Nutisionista');
+        ])->assignRole('Nutrisionista');
 
         User::create([
             'name'=> 'Jorge',

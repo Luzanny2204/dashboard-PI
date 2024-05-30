@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin\Users;
 use App\Http\Controllers\Controller;
 use App\Models\DataBiology\Databiology;
 use App\Models\MenstrualCalendar\Menstrualcalendar;
+use App\Models\Nutritionist\nutritionist;
 use App\Models\Position\Position;
+use App\Models\Psicology\Psicology;
 use App\Models\State\State;
 use App\Models\Team\Team;
 use App\Models\User;
@@ -108,7 +110,9 @@ class UsersController extends Controller
     {
         $getDataBiologies = Databiology::where('user_id',$user->id)->get();
         $getMenstrualCalendars = Menstrualcalendar::where('user_id',$user->id)->get();
-        return view('admin.users.show', compact('user','getDataBiologies','getMenstrualCalendars'));
+        $getNutritionists =  nutritionist::where('user_id', $user->id)->get();
+        $getPsicologies =  Psicology::where('user_id', $user->id)->get();
+        return view('admin.users.show', compact('user','getDataBiologies','getMenstrualCalendars','getNutritionists','getPsicologies'));
     }
 
     public function edit(User $user)

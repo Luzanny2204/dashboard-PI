@@ -53,6 +53,16 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link " data-bs-toggle="tab" data-bs-target="#calendar" aria-selected="true" role="tab">Calendario menstrual</button>
                         </li>
+                        @can('admin.users.nutri')
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " data-bs-toggle="tab" data-bs-target="#nutri" aria-selected="true" role="tab">Nutricionista</button>
+                        </li>
+                        @endcan
+                        @can('admin.users.psico')
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " data-bs-toggle="tab" data-bs-target="#psico" aria-selected="true" role="tab">Psicologia</button>
+                        </li>
+                        @endcan
                     </ul>
                     <div class="tab-content pt-4">
                         <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
@@ -103,6 +113,7 @@
                             </div>
 
                         </div>
+                        
 
                         <div class="tab-pane fade profile-overview  show" id="biology" role="tabpanel">
                             @foreach($getDataBiologies as $getDataBiology)
@@ -229,6 +240,57 @@
                                 </table>
                             </div>
                         </div>
+                        
+                        @can('admin.users.nutri')
+                        <div class="tab-pane fade profile-overview  show" id="nutri" role="tabpanel">
+                           <div class="row">
+                            <div class="col-12">
+                                <form action="{{route('admin.nutritionists.edit', $user->id)}}" method="post">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                                    <div class="row mb-3">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Descripcion</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" style="height: 100px" name="description">
+                                                @foreach($getNutritionists as $getNutritionist)
+                                                    {{$getNutritionist->description}}
+                                                @endforeach
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning">Editar</button>
+                                </form>
+                            </div>
+                           </div>
+                        </div>
+                        @endcan
+
+                        @can('admin.users.psico')
+                        <div class="tab-pane fade profile-overview  show" id="psico" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="{{route('admin.psicologies.edit', $user->id)}}" method="post">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                                    <div class="row mb-3">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Descripcion</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" style="height: 100px" name="description">
+                                                @foreach($getPsicologies as $getPsicology)
+                                                    {{$getPsicology->description}}
+                                                @endforeach
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning">Editar</button>
+                                </form>
+                            </div>
+                           </div>
+                        </div>
+                        @endcan
+                       
                     </div>
                 </div>
             </div>

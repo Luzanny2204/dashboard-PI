@@ -32,6 +32,12 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onUpdate('cascade');
         });
+        Schema::table('nutritionists', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
+        Schema::table('psicologies', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
 
     }
 

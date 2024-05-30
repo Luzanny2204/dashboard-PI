@@ -17,7 +17,7 @@ class RolesSeeder extends Seeder
     {
         $role1 = Role::create(['name' => 'Admin']);
         $role2 = Role::create(['name' => 'Entrenador tecnico']);
-        $role3 = Role::create(['name' => 'Nutisionista']);
+        $role3 = Role::create(['name' => 'Nutrisionista']);
         $role4 = Role::create(['name' => 'Psicologos']);
         $role5 = Role::create(['name' => 'Fisioterapeutas']);
         $role6 = Role::create(['name' => 'Jugadores']);
@@ -128,7 +128,7 @@ class RolesSeeder extends Seeder
          Permission::create([
             'name' => 'admin.users.index',
             'description'=> 'Listado de los usuarios'
-        ])->syncRoles([$role1]);
+        ])->syncRoles([$role1,$role3,$role4]);
         Permission::create([
             'name' => 'admin.users.create',
             'description'=> 'Creación del usuario'
@@ -140,11 +140,19 @@ class RolesSeeder extends Seeder
         Permission::create([
             'name' => 'admin.users.show',
             'description'=> 'Detalle del usuario'
-        ])->syncRoles([$role1]);
+        ])->syncRoles([$role1,$role3,$role4]);
         Permission::create([
             'name' => 'admin.users.destroy',
             'description'=> 'Eliminación del usuario'
         ])->syncRoles([$role1]);
+        Permission::create([
+            'name' => 'admin.users.nutri',
+            'description'=> 'Informacion Nutricionista'
+        ])->syncRoles([$role1,$role3]);
+        Permission::create([
+            'name' => 'admin.users.psico',
+            'description'=> 'Informacion Psicologo'
+        ])->syncRoles([$role1,$role4]);
 
 
          //Permisos admin databiologies
@@ -190,6 +198,17 @@ class RolesSeeder extends Seeder
         Permission::create([
             'name' => 'admin.menstrualcalendars.destroy',
             'description'=> 'Eliminación del calendario menstrual'
+        ])->syncRoles([$role1]);
+
+        //Permisos nutricionista
+
+        Permission::create([
+            'name' => 'admin.nutritionists.edit',
+            'description'=> 'Editar informacion Nutricion'
+        ])->syncRoles([$role1,$role3]);
+        Permission::create([
+            'name' => 'admin.psicologies.edit',
+            'description'=> 'Editar informacion Psicologo'
         ])->syncRoles([$role1]);
     }
 }

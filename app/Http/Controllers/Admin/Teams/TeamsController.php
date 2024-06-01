@@ -34,12 +34,20 @@ class TeamsController extends Controller
     {
         $teams = Team::all();
         $states = State::all();
+        //Traemos los usuarios con rol jugador
         $users =User::doesntHave('teams')
+        ->whereHas('roles', function ($query) {
+            $query->where('roles.id', 6);
+        })
+        ->get();
+        //Traemos los usuarios con rol Entrenador técnico
+        $usersTecTrainers =User::doesntHave('teams')
         ->whereHas('roles', function ($query) {
             $query->where('roles.id', 2);
         })
         ->get();
-        return view('admin.teams.create',compact('teams','states','users'));
+        
+        return view('admin.teams.create',compact('teams','states','users','usersTecTrainers'));
     }
 
  
@@ -73,11 +81,22 @@ class TeamsController extends Controller
                 });
         })
         ->whereHas('roles', function ($query) {
+            $query->where('roles.id', 6);
+        })
+        ->get();
+
+        $usersTecTrainers = User::where(function ($query) use ($team) {
+            $query->doesntHave('teams')
+                ->orWhereHas('teams', function ($q) use ($team) {
+                    $q->where('teams.id', $team->id);
+                });
+        })
+        ->whereHas('roles', function ($query) {
             $query->where('roles.id', 2);
         })
         ->get();
     
-        return view('admin.teams.edit', compact('team', 'states', 'users'));
+        return view('admin.teams.edit', compact('team', 'states', 'users','usersTecTrainers'));
     }
 
     

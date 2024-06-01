@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\DataBiologies\DatabiologiesController;
 use App\Http\Controllers\Admin\MenstrualCalendars\MenstrualcalendarsController;
 use App\Http\Controllers\Admin\Nutritionists\NutritionistsController;
+use App\Http\Controllers\Admin\Physiotherapists\PhysiotherapistsController;
 use App\Http\Controllers\Admin\Positions\PositionsController;
 use App\Http\Controllers\Admin\Psicologies\PsicologiesController;
 use App\Http\Controllers\Admin\Roles\RolesController;
@@ -24,3 +25,5 @@ Route::resource('/databiologies', DatabiologiesController::class)->names('admin.
 Route::resource('/menstrualcalendars', MenstrualcalendarsController::class)->names('admin.menstrualcalendars');
 Route::post('/nutritionists/{id}',[NutritionistsController::class,'store'])->middleware('can:admin.nutritionists.edit')->name('admin.nutritionists.edit');
 Route::post('/psicologies/{id}',[PsicologiesController::class,'store'])->middleware('can:admin.psicologies.edit')->name('admin.psicologies.edit');
+Route::resource('/physiotherapists', PhysiotherapistsController::class)->names('admin.physiotherapists');
+

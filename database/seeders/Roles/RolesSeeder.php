@@ -209,6 +209,29 @@ class RolesSeeder extends Seeder
         Permission::create([
             'name' => 'admin.psicologies.edit',
             'description'=> 'Editar informacion Psicologo'
-        ])->syncRoles([$role1]);
+        ])->syncRoles([$role1,$role4]);
+
+
+         //Permisos admin physiotherapists
+         Permission::create([
+            'name' => 'admin.physiotherapists.index',
+            'description'=> 'Listado de los fisioterapias'
+        ])->syncRoles([$role1,$role5]);
+        Permission::create([
+            'name' => 'admin.physiotherapists.create',
+            'description'=> 'Creación de la fisioterapia'
+        ])->syncRoles([$role1,$role5]);
+        Permission::create([
+            'name' => 'admin.physiotherapists.edit',
+            'description'=> 'Edición de la fisioterapia'
+        ])->syncRoles([$role1,$role5]);
+        Permission::create([
+            'name' => 'admin.physiotherapists.show',
+            'description'=> 'Detalle de la fisioterapia'
+        ])->syncRoles([$role1,$role5]);
+        Permission::create([
+            'name' => 'admin.physiotherapists.destroy',
+            'description'=> 'Eliminación de la fisioterapia'
+        ])->syncRoles([$role1,$role5]);
     }
 }

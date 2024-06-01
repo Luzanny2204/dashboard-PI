@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Panel administrativo')
 @section('content')
-@if(\Auth::user()->can('admin.dashboard'))
+@if(\Auth::user()->hasRole('Admin'))
     <div class="pagetitle">
         <h1>Panel Administravo</h1>
     </div>
@@ -150,6 +150,7 @@
                 </div>
             </div><!-- End Left side columns -->
 
+            @if(\Auth::user()->hasRole('Admin'))
             <!-- Right side columns -->
             <div class="col-lg-4">
 
@@ -200,6 +201,7 @@
                 </div><!-- End Website Traffic -->
 
             </div><!-- End Right side columns -->
+            @endif
 
         </div>
     </section>
@@ -235,9 +237,50 @@
             </div>
         </div>
     </section> -->
-@elseif(\Auth::user()->hasRole('Jugador'))
+@elseif(\Auth::user()->hasRole('Entrenador tecnico'))
+    <div class="pagetitle">
+        <h1>Panel Administravo</h1>
+    </div>
 
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-xxl-4 col-md-6 mb-4">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Mis jugadores</h5>
 
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{$countPlayers}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4 col-md-6 mb-4">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Posiciones</h5>
 
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{$positionsCount}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endif
 @endsection

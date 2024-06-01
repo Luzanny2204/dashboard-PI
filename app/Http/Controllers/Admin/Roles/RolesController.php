@@ -85,14 +85,16 @@ class RolesController extends Controller
             return redirect()->route('admin.roles.index')->with('info', 'Este rol no se puede eliminar ya que es uno de los principales en el sistema');
         }
 
-        try {
-            $role->delete();
-            return redirect()->route('admin.roles.index')->with('delete', 'El rol se elimino correctamente.');
-        } catch (QueryException $e) {
-            if ($e->errorInfo[1] === 1451) {
-                return redirect()->route('admin.roles.index')->with('info', 'El rol no se puede eliminar, ya que está relacionado con otros registros.');
-            }
+        if ($role->users()->count() > 0) {
+            return redirect()->route('admin.roles.index')->with('info', 'El rol no se puede eliminar, ya que tiene usuarios asociados.');
         }
 
+        try {
+            $role->delete();
+            return redirect()->route('admin.roles.index')->with('delete', 'El rol se eliminó correctamente.');
+        } catch (QueryException $e) {
+            return redirect()->route('admin.roles.index')->with('error', 'Ocurrió un error al intentar eliminar el rol.');
+        }
     }
+
 }

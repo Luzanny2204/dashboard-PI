@@ -21,6 +21,7 @@ return new class extends Migration
         });
         Schema::table('teams', function ($table){
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
         });
         Schema::table('databiologies', function ($table){
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
@@ -36,6 +37,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
         });
         Schema::table('psicologies', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
+        Schema::table('physiotherapists', function ($table){
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
         });
 

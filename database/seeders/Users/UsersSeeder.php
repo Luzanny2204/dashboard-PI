@@ -27,7 +27,23 @@ class UsersSeeder extends Seeder
             'name'=> 'Laura',
             'email'=> 'Laura@gmail.com',
             'password'=> Hash::make('123'),
-            'position_id'=> 1,
+            'position_id'=> null,
+            'state_id'=> 1,
+        ])->assignRole('Entrenador tecnico');
+
+        User::create([
+            'name'=> 'santiago',
+            'email'=> 'santiago@gmail.com',
+            'password'=> Hash::make('123'),
+            'position_id'=> null,
+            'state_id'=> 1,
+        ])->assignRole('Entrenador tecnico');
+
+        User::create([
+            'name'=> 'lucia',
+            'email'=> 'lucia@gmail.com',
+            'password'=> Hash::make('123'),
+            'position_id'=> null,
             'state_id'=> 1,
         ])->assignRole('Entrenador tecnico');
 
@@ -35,7 +51,7 @@ class UsersSeeder extends Seeder
             'name'=> 'Mateo',
             'email'=> 'mateo@gmail.com',
             'password'=> Hash::make('123'),
-            'position_id'=> 1,
+            'position_id'=> null,
             'state_id'=> 1,
         ])->assignRole('Nutrisionista');
 
@@ -43,7 +59,7 @@ class UsersSeeder extends Seeder
             'name'=> 'Jorge',
             'email'=> 'jorge@gmail.com',
             'password'=> Hash::make('123'),
-            'position_id'=> 1,
+            'position_id'=> null,
             'state_id'=> 1,
         ])->assignRole('Psicologos');
 
@@ -51,7 +67,7 @@ class UsersSeeder extends Seeder
             'name'=> 'Jenni',
             'email'=> 'jenni@gmail.com',
             'password'=> Hash::make('123'),
-            'position_id'=> 1,
+            'position_id'=> null,
             'state_id'=> 1,
         ])->assignRole('Fisioterapeutas');
 
@@ -64,15 +80,23 @@ class UsersSeeder extends Seeder
         ])->assignRole('Jugadores');
 
         User::create([
-            'name'=> 'jugador',
-            'email'=> 'jugador2@gmail.com',
+            'name'=> 'jugador 1',
+            'email'=> 'jugador1@gmail.com',
             'password'=> Hash::make('123'),
             'position_id'=> 2,
             'state_id'=> 1,
         ])->assignRole('Jugadores');
 
         User::create([
-            'name'=> 'jugador',
+            'name'=> 'jugador 2',
+            'email'=> 'jugador2@gmail.com',
+            'password'=> Hash::make('123'),
+            'position_id'=> 1,
+            'state_id'=> 1,
+        ])->assignRole('Jugadores');
+
+        User::create([
+            'name'=> 'jugador 3',
             'email'=> 'jugador3@gmail.com',
             'password'=> Hash::make('123'),
             'position_id'=> 2,

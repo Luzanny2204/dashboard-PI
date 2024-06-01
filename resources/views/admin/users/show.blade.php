@@ -13,7 +13,7 @@
 </div>
 <section class="section profile">
     <div class="row">
-        <div class="col-xl-4">
+        <div class="col-xl-3">
 
             <div class="card">
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
@@ -38,20 +38,20 @@
             </div>
         </div>
 
-        <div class="col-xl-8">
+        <div class="col-xl-9">
 
             <div class="card">
                 <div class="card-body pt-3">
                     <!-- Bordered Tabs -->
                     <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab">Detalle del Perfil</button>
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab">Deta. Perfil</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link " data-bs-toggle="tab" data-bs-target="#biology" aria-selected="true" role="tab">Datos Biológicos</button>
+                            <button class="nav-link " data-bs-toggle="tab" data-bs-target="#biology" aria-selected="true" role="tab">Dat. Biológicos</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link " data-bs-toggle="tab" data-bs-target="#calendar" aria-selected="true" role="tab">Calendario menstrual</button>
+                            <button class="nav-link " data-bs-toggle="tab" data-bs-target="#calendar" aria-selected="true" role="tab">Cal. menstrual</button>
                         </li>
                         @can('admin.users.nutri')
                         <li class="nav-item" role="presentation">
@@ -116,41 +116,45 @@
                         
 
                         <div class="tab-pane fade profile-overview  show" id="biology" role="tabpanel">
-                            @foreach($getDataBiologies as $getDataBiology)
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Cintura</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->waist}}</div>
-                            </div>
+                            @if(count($getDataBiologies) > 0)
+                                @foreach($getDataBiologies as $getDataBiology)
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Cintura</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->waist}}</div>
+                                    </div>
 
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Quadril</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->quadril}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Busto</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->bust}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Resistencia</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->endurance}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Velocidad</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->speed}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Flexibilidad</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->flexibility}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Temperatura</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->temperature}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">IMC</div>
-                                <div class="col-lg-9 col-md-8">{{$getDataBiology->imc}}</div>
-                            </div>
-                            @endforeach
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Quadril</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->quadril}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Busto</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->bust}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Resistencia</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->endurance}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Velocidad</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->speed}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Flexibilidad</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->flexibility}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Temperatura</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->temperature}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">IMC</div>
+                                        <div class="col-lg-9 col-md-8">{{$getDataBiology->imc}}</div>
+                                    </div>
+                                @endforeach
+                            @else
+                            Sin datos biológicos
+                            @endif
 
                         </div>
 
@@ -167,75 +171,83 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($getMenstrualCalendars as $menstrualcalendar)
-                                        <tr>
-                                            <td>{{$menstrualcalendar->id}}</td>
-                                            <td>{{$menstrualcalendar->user->name}}</td>
-                                            <td>{{$menstrualcalendar->last_period}}</td>
-                                            <td>
-                                                @if($menstrualcalendar->duration > 9)
-                                                {{ $menstrualcalendar->duration . ' Días' }}
-                                                @else
-                                                {{ $menstrualcalendar->duration . ' Día' }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#show_calendar_{{$menstrualcalendar->id}}">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
+                                        @if(count($getMenstrualCalendars) > 0)
+                                            @foreach($getMenstrualCalendars as $menstrualcalendar)
+                                            <tr>
+                                                <td>{{$menstrualcalendar->id}}</td>
+                                                <td>{{$menstrualcalendar->user->name}}</td>
+                                                <td>{{$menstrualcalendar->last_period}}</td>
+                                                <td>
+                                                    @if($menstrualcalendar->duration > 9)
+                                                    {{ $menstrualcalendar->duration . ' Días' }}
+                                                    @else
+                                                    {{ $menstrualcalendar->duration . ' Día' }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#show_calendar_{{$menstrualcalendar->id}}">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
 
-                                                    <div class="modal fade" id="show_calendar_{{$menstrualcalendar->id}}" tabindex="-1" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">Detalle del calendario menstrual</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <div class="modal fade" id="show_calendar_{{$menstrualcalendar->id}}" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Detalle del calendario menstrual</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group">
+                                                                            <label for="last_period"> Fecha último periodo:</label>
+                                                                            <input type="date" disabled value="{{$menstrualcalendar->last_period}}" name="last_period" class="form-control form-control-border" id="last_period">
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <label for="duration"> Duración por días:</label>
+                                                                            <input type="number" disabled value="{{$menstrualcalendar->duration}}" name="duration" class="form-control form-control-border" id="duration" placeholder="Duración">
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <label for="symptoms"> Sintomas:</label>
+                                                                            <input type="text" disabled value="{{$menstrualcalendar->symptoms}}" name="symptoms" class="form-control form-control-border" id="symptoms" placeholder="Sintomas">
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <label for="cervical_flux"> Fluido Cervical:</label>
+                                                                            <input type="text" disabled value="{{$menstrualcalendar->cervical_flux}}" name="cervical_flux" class="form-control form-control-border" id="cervical_flux" placeholder="Fluido Cervical">
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <label for="sexual_activity"> Actividad sexual:</label>
+                                                                            <input type="text" disabled value="{{$menstrualcalendar->sexual_activity}}" name="sexual_activity" class="form-control form-control-border" id="sexual_activity" placeholder="Actividad sexual">
+                                                                        </div>
+
+                                                                    
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                    </div>
+                                                                    </form>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <div class="form-group">
-                                                                        <label for="last_period"> Fecha último periodo:</label>
-                                                                        <input type="date" disabled value="{{$menstrualcalendar->last_period}}" name="last_period" class="form-control form-control-border" id="last_period">
-                                                                    </div>
-
-
-                                                                    <div class="form-group">
-                                                                        <label for="duration"> Duración por días:</label>
-                                                                        <input type="number" disabled value="{{$menstrualcalendar->duration}}" name="duration" class="form-control form-control-border" id="duration" placeholder="Duración">
-                                                                    </div>
-
-
-                                                                    <div class="form-group">
-                                                                        <label for="symptoms"> Sintomas:</label>
-                                                                        <input type="text" disabled value="{{$menstrualcalendar->symptoms}}" name="symptoms" class="form-control form-control-border" id="symptoms" placeholder="Sintomas">
-                                                                    </div>
-
-
-                                                                    <div class="form-group">
-                                                                        <label for="cervical_flux"> Fluido Cervical:</label>
-                                                                        <input type="text" disabled value="{{$menstrualcalendar->cervical_flux}}" name="cervical_flux" class="form-control form-control-border" id="cervical_flux" placeholder="Fluido Cervical">
-                                                                    </div>
-
-
-                                                                    <div class="form-group">
-                                                                        <label for="sexual_activity"> Actividad sexual:</label>
-                                                                        <input type="text" disabled value="{{$menstrualcalendar->sexual_activity}}" name="sexual_activity" class="form-control form-control-border" id="sexual_activity" placeholder="Actividad sexual">
-                                                                    </div>
-
-                                                                
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                                </div>
-                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @else
+                                        <tr>
+                                            <td class="text-center" colspan="5">
+                                                Sin registros de calendarios menstruales
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -250,9 +262,11 @@
                                     @method('POST')
                                     <input type="hidden" name="user_id" value="{{$user->id}}">
                                     <div class="row mb-3">
-                                        <label for="inputPassword" class="col-sm-2 col-form-label">Descripcion</label>
-                                        <div class="col-sm-12">
-                                            <textarea class="form-control" style="height: 100px" name="description">
+                                        <div class="col-12">
+                                            <label for="inputPassword" class="form-label">Descripción</label>
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control"  id="descriptionNutri" name="description">
                                                 @foreach($getNutritionists as $getNutritionist)
                                                     {{$getNutritionist->description}}
                                                 @endforeach
@@ -275,11 +289,11 @@
                                     @method('POST')
                                     <input type="hidden" name="user_id" value="{{$user->id}}">
                                     <div class="row mb-3">
-                                        <label for="inputPassword" class="col-sm-2 col-form-label">Descripcion</label>
+                                        <label for="inputPassword" class="col-12 col-form-label">Descripción</label>
                                         <div class="col-sm-12">
-                                            <textarea class="form-control" style="height: 100px" name="description">
+                                            <textarea class="form-control" id="descriptionPsy"  name="description">
                                                 @foreach($getPsicologies as $getPsicology)
-                                                    {{$getPsicology->description}}
+                                                    {!!$getPsicology->description!!}
                                                 @endforeach
                                             </textarea>
                                         </div>
@@ -301,5 +315,37 @@
 @endsection
 
 @section('script')
+<script>
+    $('#descriptionNutri').summernote({
+        placeholder: 'Describa aquí la situación del paciente',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
 
+<script>
+    $('#descriptionPsy').summernote({
+        placeholder: 'Describa aquí la situación del paciente',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
 @endsection

@@ -14,14 +14,18 @@ class Team extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
-        'state_id'
+        'state_id',
+        'user_id'
     ]; 
     
     
     //Relacion directa 
     public function state(){
-        //return $this->belongsTo('App\Models\State\State', 'state_id');
         return $this->belongsTo(State::class);
+    }
+
+    public function userTeam(){
+        return $this->belongsTo(User::class,'user_id');
     }
 
      /*Relacion de muchos a muchos*/

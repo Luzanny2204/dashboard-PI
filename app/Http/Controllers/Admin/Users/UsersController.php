@@ -42,11 +42,19 @@ class UsersController extends Controller
             $query->where('roles.id', 3);
         })->get();
 
+        $userPsychologies = User::whereHas('roles', function ($query) {
+            $query->where('roles.id', 4);
+        })->get();
+
+        $userPhysiotherapists = User::whereHas('roles', function ($query) {
+            $query->where('roles.id', 5);
+        })->get();
+
         $userPlayers = User::whereHas('roles', function ($query) {
             $query->where('roles.id', 6);
         })->get();
 
-        return view('admin.users.index', compact('userAdmins','userTechnicalTrainer','userNutritionists','userPlayers'));
+        return view('admin.users.index', compact('userAdmins','userTechnicalTrainer','userNutritionists','userPsychologies','userPhysiotherapists','userPlayers'));
     }
 
     public function create()

@@ -33,7 +33,14 @@ class DatabiologiesController extends Controller
 
     public function store(DatabiologiesCreateRequest $request)
     {
+        $existingDatabiology = Databiology::where('user_id', $request->user_id)->first();
+
+        if ($existingDatabiology) {
+            return redirect()->route('admin.databiologies.index')->with('info', 'No es posible crear la información biológica porque ya existe un registro para este usuario.');
+        }
+    
         Databiology::create($request->all());
+
         return redirect()->route('admin.databiologies.index')->with('success', 'El dato biológico se a creado correctamente.');
     }
 

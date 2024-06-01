@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\States\StatesCreateRequest;
 use App\Models\State\State;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class StatesController extends Controller
 {
@@ -60,7 +61,14 @@ class StatesController extends Controller
     
     public function destroy(State $state)
     {
-        $state->delete();
-        return redirect()->route('admin.states.index')->with('delete', 'El estado se a eliminado correctamente.');
+        try {
+            $state->delete();
+            return redirect()->route('admin.states.index')->with('delete', 'El estado se a eliminado correctamente.');
+        } catch (QueryException $e) {
+            if ($e->getCode() == 23000) { 
+                return redirect()->route('admin.states.index')->with('info', 'No es posible eliminar el estado porque está asociada a uno o más registros.');
+            }
+            return redirect()->route('admin.states.index')->with('info', 'Ocurrió un error al intentar eliminar el estado.');
+        }
     }
 }

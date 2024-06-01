@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Models\DataBiology\Databiology;
 use App\Models\MenstrualCalendar\Menstrualcalendar;
 use App\Models\Nutritionist\nutritionist;
+use App\Models\Physiotherapist\Physiotherapist;
 use App\Models\Position\Position;
 use App\Models\Psicology\Psicology;
 use App\Models\State\State;
@@ -86,12 +87,26 @@ class User extends Authenticatable
         return $this->hasMany(Menstrualcalendar::class);
     }
 
-        //Relacion Inversa
-        public function nutritionists(){
-            return $this->hasMany(nutritionist::class);
-        }
-        //Relacion Inversa
-        public function psicologies(){
-            return $this->hasMany(Psicology::class);
-        }
+    //Relacion Inversa
+    public function nutritionists(){
+        return $this->hasMany(nutritionist::class);
+    }
+    //Relacion Inversa
+    public function psicologies(){
+        return $this->hasMany(Psicology::class);
+    }
+
+    //Relacion Inversa
+    public function teamsUsers(){
+        return $this->hasMany(Psicology::class,'user_id');
+    }
+
+     //Relacion Inversa
+     public function physiotherapists(){
+        return $this->hasMany(Physiotherapist::class);
+    }
+
+
 }
+
+

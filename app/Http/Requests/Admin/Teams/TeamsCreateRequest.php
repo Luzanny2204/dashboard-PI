@@ -24,6 +24,7 @@ class TeamsCreateRequest extends FormRequest
         return [
             'name' => 'required',
             'state_id' => 'required',
+            'user_id' => 'nullable',
             'users' => 'nullable',
         ];
     }
@@ -33,6 +34,7 @@ class TeamsCreateRequest extends FormRequest
         return [
             'name' => 'Nombre',
             'state_id' => 'Estado',
+            'user_id' => 'Entrenador Técnico',
         ];
     }
 
@@ -41,6 +43,7 @@ class TeamsCreateRequest extends FormRequest
         return [
             'name.required' => 'El nombre del equipo es obligatorio',
             'state_id.required' => 'El estado del equipo es obligatorio',
+            'user_id.nullable' => 'El entrenador técnico del equipo no es obligatorio',
         ];
     }
 }

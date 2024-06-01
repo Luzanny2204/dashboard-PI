@@ -25,17 +25,30 @@
                     </div>
 
                     <div class="form-group mt-2">
+                        <label for="user_id">Entrenador: <span class="text-danger mt-1">*</span></label>
+                        <select class="form-control " disabled name="user_id" id="user_id">
+                                <option  >{{ $team->userTeam->name ?? 'Sin entrenador'}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2">
                         <label for="state_id">Estados: <span class="text-danger mt-1">*</span></label>
                         <select class="form-control " disabled name="state_id" id="state_id">
-                                <option value="{{ $team->state_id }}" >{{ $team->state->name }}</option>
+                                <option  >{{ $team->state->name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mt-2">
                         <label for="users">Jugadores:</label>
-                        @foreach($team->users as $user)
-                            <ul >{{ $user->name }}</ul>
-                        @endforeach
+                       @if($team->users->count() > 0)
+                       <ol>
+                            @foreach($team->users as  $user)
+                                    <li >{{$user->name  . ' | ' }} {{ $user->position->name ?? 'Sin posición'}}</li>
+                            @endforeach
+                        </ol>
+                        @else
+                        El equipo no cuenta con Jugadores
+                       @endif
                     </div>
                     @error('users')
                     <span class="text-danger">{{ $message }}</span>

@@ -43,6 +43,21 @@
                     @enderror
 
                     <div class="form-group mt-2">
+                        <label for="user_id">Entrenador Técnico:</label>
+                        <select class="form-control createTecTrainer" name="user_id" id="user_id" >
+                            <option value="">--Seleccionar estado--</option>
+                            @foreach($usersTecTrainers as $usersTecTrainer)
+                                <option value="{{$usersTecTrainer->id}}">{{$usersTecTrainer->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('users')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+
+
+
+                    <div class="form-group mt-2">
                         <label for="users">Jugadores:</label>
                         <select class="form-control createPlayers" name="users[]" id="users" multiple>
                             <option value="">--Seleccionar estado--</option>
@@ -68,6 +83,12 @@
 
 @section('script')
 <script>
+   $(document).ready(function() {
+        $('.createTecTrainer').select2();
+    });
+</script>
+<script>
+   
     $(document).ready(function() {
         $('.createPlayers').select2();
     });

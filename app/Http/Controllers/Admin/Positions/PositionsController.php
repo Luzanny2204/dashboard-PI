@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Positions\PositionsCreateRequest;
 use App\Models\Position\Position;
 use App\Models\State\State;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class PositionsController extends Controller
 {
@@ -61,7 +62,14 @@ class PositionsController extends Controller
     
     public function destroy(Position $position)
     {
-        $position->delete();
-        return redirect()->route('admin.positions.index')->with('delete', 'La posición se a eliminado correctamente.');
+        try {
+            $position->delete();
+            return redirect()->route('admin.positions.index')->with('delete', 'La posición se ha eliminado correctamente.');
+        } catch (QueryException $e) {
+            if ($e->getCode() == 23000) { 
+                return redirect()->route('admin.positions.index')->with('info', 'No es posible eliminar la posición porque está asociada a uno o más usuarios.');
+            }
+            return redirect()->route('admin.positions.index')->with('info', 'Ocurrió un error al intentar eliminar la posición.');
+        }
     }
 }

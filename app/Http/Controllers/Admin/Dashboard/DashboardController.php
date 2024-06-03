@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index(){
-        if(Auth::user()->hasRole('Admin')){
+        if(Auth::user()->can('admin.dashboard')){
             // Contar jugadores con el rol específico (ID 6)
             $countPlayers = User::whereHas('roles', function ($query) {
                 $query->where('roles.id', 6);
@@ -55,7 +55,7 @@ class DashboardController extends Controller
             // Pasar datos a la vista
             return view('admin.dashboard.index', compact('countPlayers', 'countTeams', 'rolesData', 'positionsData'));
        }
-        elseif(Auth::user()->hasRole('Entrenador tecnico')){
+        elseif(Auth::user()->hasRole('Treinador')){
             $team = Team::where('user_id', Auth::id())->first();
             if ($team) {
                 $countPlayers = $team->users()->count();
@@ -65,7 +65,7 @@ class DashboardController extends Controller
                 // Sumar las position_id únicas
                 $positionsCount = $positions->unique()->count();
 
-                dd($positionsCount);
+                //dd($positionsCount);
             } else {
                 $countPlayers = 0;
                 $positionsCount = 0;

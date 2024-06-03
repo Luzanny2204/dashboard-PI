@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title','Edición de la fisioterapia')
+@section('title','Edição da fisioterapia')
 @section('content')
 <div>
-    <h1>Edición de la fisioterapia</h1>
+    <h1>Edição da fisioterapia</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.physiotherapists.index')}}">Listado de la fisioterapia</a></li>
-            <li class="breadcrumb-item active">Edición de la fisioterapia</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.physiotherapists.index')}}">Lista de fisioterapia</a></li>
+            <li class="breadcrumb-item active">Edição da fisioterapia</li>
         </ol>
     </nav>
 </div>
@@ -19,11 +19,11 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="d-flex justify-content-end">
-                        <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                        <span class="text-danger mt-1">* </span><span>Campo obrigatório.</span>
                     </div>
                     <div class="form-group">
-                        <label for="consultation_date"><span class="text-danger">*</span> Fecha consulta:</label>
-                        <input type="date" name="consultation_date" value="{{$physiotherapist->consultation_date}}" class="form-control form-control-border" id="consultation_date" placeholder="Nombre">
+                        <label for="consultation_date"><span class="text-danger">*</span> Data da consulta:</label>
+                        <input type="date" name="consultation_date" value="{{$physiotherapist->consultation_date}}" class="form-control form-control-border" id="consultation_date" placeholder="Nome">
                     </div>
                     @error('consultation_date')
                     <span class="text-danger">{{$message}}</span>
@@ -31,9 +31,9 @@
 
 
                     <div class="form-group mt-2">
-                        <label for="user_id"><span class="text-danger">*</span>  Jugador:</label>
-                        <select class="form-control createPlayer" name="user_id" id="user_id" >
-                            <option value="">--Seleccionar jugador--</option>
+                        <label for="user_id"><span class="text-danger">*</span> Jogador:</label>
+                        <select class="form-control createPlayer" name="user_id" id="user_id">
+                            <option value="">--Selecionar jogador--</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}" {{ $physiotherapist->user_id == $user->id ? 'selected' : '' }}>{{$user->name}}</option>
                             @endforeach
@@ -44,7 +44,7 @@
                     @enderror
 
                     <div class="mt-2">
-                    <label ><span class="text-danger">*</span>  Descripcion:</label>
+                    <label><span class="text-danger">*</span> Descrição:</label>
 
                         <textarea name="description" id="description">
                             {!! $physiotherapist->description !!}
@@ -57,8 +57,8 @@
                     
                 </div>
                 <div class="d-flex mt-3">
-                    <a href="{{route('admin.physiotherapists.index')}}" class="btn btn-secondary" >Volver</a>
-                    <button type="submit" class="btn btn-warning  mx-2">Editar Fisioterapia</button>
+                    <a href="{{route('admin.physiotherapists.index')}}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-warning mx-2">Editar Fisioterapia</button>
                 </div>
             </form>
         </div>
@@ -76,7 +76,7 @@
 
 <script>
     $('#description').summernote({
-        placeholder: 'Describa aquí la situación del paciente',
+        placeholder: 'Descreva aqui a situação do paciente',
         tabsize: 2,
         height: 120,
         toolbar: [
@@ -91,5 +91,3 @@
     });
 </script>
 @endsection
-
-

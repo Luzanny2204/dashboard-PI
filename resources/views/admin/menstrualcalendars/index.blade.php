@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Listado de Calendarios Menstruales')
+@section('title','Lista de Calendários Menstruais')
 @section('content')
 <div>
-    <h1>Listado de Calendarios Menstruales</h1>
+    <h1>Lista de Calendários Menstruais</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item active">Listado de Calendarios Menstruales</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item active">Lista de Calendários Menstruais</li>
         </ol>
     </nav>
 </div>
@@ -15,7 +15,7 @@
         <div class="col-12">
             @can('admin.menstrualcalendars.create')
                 <a class="btn btn-primary" href="{{route('admin.menstrualcalendars.create')}}">
-                    Crear Calendario menstrual
+                    Criar Calendário Menstrual
                 </a>
             @endcan
         </div>
@@ -28,10 +28,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Último periodo</th>
-                                    <th scope="col">Duración</th>
-                                    <th scope="col">Acción</th>
+                                    <th scope="col">Usuário</th>
+                                    <th scope="col">Último período</th>
+                                    <th scope="col">Duração</th>
+                                    <th scope="col">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,9 +42,9 @@
                                     <td>{{$menstrualcalendar->last_period}}</td>
                                     <td>
                                     @if($menstrualcalendar->duration > 9)
-                                        {{ $menstrualcalendar->duration . ' Días' }}
+                                        {{ $menstrualcalendar->duration . ' Dias' }}
                                     @else
-                                        {{ $menstrualcalendar->duration . ' Día' }}
+                                        {{ $menstrualcalendar->duration . ' Dia' }}
                                     @endif
                                     </td>
                                     <td>
@@ -63,7 +63,7 @@
                                             <form method="post" action="{{ route('admin.menstrualcalendars.destroy', $menstrualcalendar) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger "><i class="fa fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                             </form>
                                         @endcan
                                         </div>
@@ -85,5 +85,3 @@
 @section('script')
 
 @endsection
-
-

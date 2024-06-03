@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Listado de roles')
+@section('title','Lista de papéis')
 @section('content')
 <div>
-    <h1>Listado de roles</h1>
+    <h1>Lista de papéis</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item active">Listado de roles</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item active">Lista de papéis</li>
         </ol>
     </nav>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-12">
             <a href="{{route('admin.roles.create')}}" class="btn btn-primary">
-                Crear rol
+                Criar papel
             </a>
         </div>
         <div class="col-12 mt-5">
@@ -27,8 +27,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Acción</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,15 +50,14 @@
                                                 </a>
                                             @endcan
                                             @can('admin.roles.destroy')
-                                                <a style="margin-left: 5px" title="Eliminar" onclick="document.getElementById('eliminarRoles_{{ $loop->iteration }}').submit()" class="btn btn-danger ">
+                                                <a style="margin-left: 5px" title="Excluir" onclick="document.getElementById('eliminarRoles_{{ $loop->iteration }}').submit()" class="btn btn-danger">
                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </a>
-                                                <form action="{{route('admin.roles.destroy',$role)}}"  method="POST" id="eliminarRoles_{{ $loop->iteration }}">
+                                                <form action="{{route('admin.roles.destroy',$role)}}" method="POST" id="eliminarRoles_{{ $loop->iteration }}">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
                                             @endcan
-                                          
                                         </div>
                                     </td>
                                 </tr>

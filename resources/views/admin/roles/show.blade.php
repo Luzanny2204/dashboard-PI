@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Detalle del rol')
+@section('title', 'Detalhe do papel')
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -9,9 +9,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Inicio</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('admin.roles.index')}}">Listado de Roles</a></li>
-                        <li class="breadcrumb-item active">Detalle del Rol</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Início</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.roles.index')}}">Lista de Papéis</a></li>
+                        <li class="breadcrumb-item active">Detalhe do Papel</li>
                     </ol>
                 </div>
             </div>
@@ -21,10 +21,10 @@
         <div class="container-fluid">
             <div class="card card-default color-palette-box">
                 <div class="card-body">
-                    <h1>Detalle del Rol: {{$role->name}}</h1>
+                    <h1>Detalhe do Papel: {{$role->name}}</h1>
                     <div class="col-12">
-                        <div class=" row">
-                            <label>Listado de Permisos asignados a este Rol:</label>
+                        <div class="row">
+                            <label>Lista de Permissões atribuídas a este Papel:</label>
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body table-responsive p-3">

@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Listado de usuarios')
+@section('title','Lista de usuários')
 @section('content')
 <div>
-    <h1>Listado de Usuarios</h1>
+    <h1>Lista de Usuários</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item active">Listado de Usuarios</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item active">Lista de Usuários</li>
         </ol>
     </nav>
 </div>
@@ -15,59 +15,58 @@
         <div class="col-12">
             @can('admin.users.create')
                 <a class="btn btn-primary" href="{{route('admin.users.create')}}">
-                    Crear usuario
+                    Criar usuário
                 </a>
             @endcan
         </div>
-
 
         <div class="col-12">
             <div class="card">
                 <div class="card-body pt-3">
                     <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
-                        @if(\Auth::user()->hasRole('Admin'))
+                        @if(\Auth::user()->hasRole('Administrador'))
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab">Administradores</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#user-technical-trainer" aria-selected="false" tabindex="-1" role="tab">Entrenador técnico</button>
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#user-technical-trainer" aria-selected="false" tabindex="-1" role="tab">Treinador técnico</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#userNutritionists" aria-selected="false" tabindex="-1" role="tab">Nutricionistas</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#userPsychologies" aria-selected="false" tabindex="-1" role="tab">Psicologos</button>
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#userPsychologies" aria-selected="false" tabindex="-1" role="tab">Psicólogos</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#userPhysiotherapists" aria-selected="false" tabindex="-1" role="tab">Fisioterapeutas</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Jugadores</button>
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Jogadores</button>
                             </li>
                         @endif
-                        @if(\Auth::user()->hasRole('Nutrisionista')||\Auth::user()->hasRole('Psicologos'))
+                        @if(\Auth::user()->hasRole('Nutricionista')||\Auth::user()->hasRole('Psicólogos'))
 
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Jugadores</button>
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Jogadores</button>
                         </li>
                         @endif
 
                     </ul>
                     <div class="tab-content pt-2">
-                        @if(\Auth::user()->hasRole('Admin'))
+                        @if(\Auth::user()->hasRole('Administrador'))
                             <div class="tab-pane fade show active profile-overview" id="profile-overview" role="tabpanel">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Correo</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">E-mail</th>
                                                 <th scope="col">Estado</th>
-                                                <th scope="col">Posición</th>
-                                                <th scope="col">Equipo</th>
-                                                <th scope="col">Rol</th>
-                                                <th scope="col">Acción</th>
+                                                <th scope="col">Posição</th>
+                                                <th scope="col">Equipe</th>
+                                                <th scope="col">Função</th>
+                                                <th scope="col">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,14 +76,14 @@
                                                 <td>{{$userAdmin->name}}</td>
                                                 <td>{{$userAdmin->email}}</td>
                                                 <td>{{$userAdmin->state->name}}</td>
-                                                <td>{{$userAdmin->position->name ?? 'Sin posición'}}</td>
+                                                <td>{{$userAdmin->position->name ?? 'Sem posição'}}</td>
                                                 <td>
                                                 @if($userAdmin->teams->isNotEmpty())
                                                     @foreach($userAdmin->teams as $team)
                                                         {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                     @endforeach
                                                 @else
-                                                    Sin equipo
+                                                    Sem equipe
                                                 @endif
 
                                                 </td>
@@ -129,13 +128,13 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Correo</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">E-mail</th>
                                                 <th scope="col">Estado</th>
-                                                <th scope="col">Posición</th>
-                                                <th scope="col">Equipo</th>
-                                                <th scope="col">Rol</th>
-                                                <th scope="col">Acción</th>
+                                                <th scope="col">Posição</th>
+                                                <th scope="col">Equipe</th>
+                                                <th scope="col">Função</th>
+                                                <th scope="col">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -145,14 +144,14 @@
                                                 <td>{{$userTechnicalTrainer->name}}</td>
                                                 <td>{{$userTechnicalTrainer->email}}</td>
                                                 <td>{{$userTechnicalTrainer->state->name}}</td>
-                                                <td>{{$userTechnicalTrainer->position->name ?? 'Sin posición'}}</td>
+                                                <td>{{$userTechnicalTrainer->position->name ?? 'Sem posição'}}</td>
                                                 <td>
                                                 @if($userTechnicalTrainer->teams->isNotEmpty())
                                                     @foreach($userTechnicalTrainer->teams as $team)
                                                         {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                     @endforeach
                                                 @else
-                                                    Sin equipo
+                                                    Sem equipe
                                                 @endif
 
                                                 </td>
@@ -198,13 +197,13 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Correo</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">E-mail</th>
                                                 <th scope="col">Estado</th>
-                                                <th scope="col">Posición</th>
-                                                <th scope="col">Equipo</th>
-                                                <th scope="col">Rol</th>
-                                                <th scope="col">Acción</th>
+                                                <th scope="col">Posição</th>
+                                                <th scope="col">Equipe</th>
+                                                <th scope="col">Função</th>
+                                                <th scope="col">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -214,14 +213,14 @@
                                                 <td>{{$userNutritionist->name}}</td>
                                                 <td>{{$userNutritionist->email}}</td>
                                                 <td>{{$userNutritionist->state->name}}</td>
-                                                <td>{{$userNutritionist->position->name ?? 'Sin posición'}}</td>
+                                                <td>{{$userNutritionist->position->name ?? 'Sem posição'}}</td>
                                                 <td>
                                                 @if($userNutritionist->teams->isNotEmpty())
                                                     @foreach($userNutritionist->teams as $team)
                                                         {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                     @endforeach
                                                 @else
-                                                    Sin equipo
+                                                    Sem equipe
                                                 @endif
 
                                                 </td>
@@ -267,13 +266,13 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Correo</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">E-mail</th>
                                                 <th scope="col">Estado</th>
-                                                <th scope="col">Posición</th>
-                                                <th scope="col">Equipo</th>
-                                                <th scope="col">Rol</th>
-                                                <th scope="col">Acción</th>
+                                                <th scope="col">Posição</th>
+                                                <th scope="col">Equipe</th>
+                                                <th scope="col">Função</th>
+                                                <th scope="col">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -283,14 +282,14 @@
                                                 <td>{{$userPsychology->name}}</td>
                                                 <td>{{$userPsychology->email}}</td>
                                                 <td>{{$userPsychology->state->name}}</td>
-                                                <td>{{$userPsychology->position->name ?? 'Sin posición'}}</td>
+                                                <td>{{$userPsychology->position->name ?? 'Sem posição'}}</td>
                                                 <td>
                                                 @if($userPsychology->teams->isNotEmpty())
                                                     @foreach($userPsychology->teams as $team)
                                                         {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                     @endforeach
                                                 @else
-                                                    Sin equipo
+                                                    Sem equipe
                                                 @endif
 
                                                 </td>
@@ -336,13 +335,13 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Correo</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">E-mail</th>
                                                 <th scope="col">Estado</th>
-                                                <th scope="col">Posición</th>
-                                                <th scope="col">Equipo</th>
-                                                <th scope="col">Rol</th>
-                                                <th scope="col">Acción</th>
+                                                <th scope="col">Posição</th>
+                                                <th scope="col">Equipe</th>
+                                                <th scope="col">Função</th>
+                                                <th scope="col">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -352,14 +351,14 @@
                                                 <td>{{$userPhysiotherapist->name}}</td>
                                                 <td>{{$userPhysiotherapist->email}}</td>
                                                 <td>{{$userPhysiotherapist->state->name}}</td>
-                                                <td>{{$userPhysiotherapist->position->name ?? 'Sin posición'}}</td>
+                                                <td>{{$userPhysiotherapist->position->name ?? 'Sem posição'}}</td>
                                                 <td>
                                                 @if($userPhysiotherapist->teams->isNotEmpty())
                                                     @foreach($userPhysiotherapist->teams as $team)
                                                         {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                     @endforeach
                                                 @else
-                                                    Sin equipo
+                                                    Sem equipe
                                                 @endif
 
                                                 </td>
@@ -399,21 +398,19 @@
                                 </div>
                             </div>
 
-
-
                             <div class="tab-pane fade show profile-edit pt-3" id="profile-edit" role="tabpanel">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Correo</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">E-mail</th>
                                                 <th scope="col">Estado</th>
-                                                <th scope="col">Posición</th>
-                                                <th scope="col">Equipo</th>
-                                                <th scope="col">Rol</th>
-                                                <th scope="col">Acción</th>
+                                                <th scope="col">Posição</th>
+                                                <th scope="col">Equipe</th>
+                                                <th scope="col">Função</th>
+                                                <th scope="col">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -423,14 +420,14 @@
                                                 <td>{{$userPlayer->name}}</td>
                                                 <td>{{$userPlayer->email}}</td>
                                                 <td>{{$userPlayer->state->name}}</td>
-                                                <td>{{$userPlayer->position->name ?? 'Sin posición'}}</td>
+                                                <td>{{$userPlayer->position->name ?? 'Sem posição'}}</td>
                                                 <td>
                                                 @if($userPlayer->teams->isNotEmpty())
                                                     @foreach($userPlayer->teams as $team)
                                                         {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                     @endforeach
                                                 @else
-                                                    Sin equipo
+                                                    Sem equipe
                                                 @endif
 
                                                 </td>
@@ -470,7 +467,7 @@
                                 </div>
                             </div>
                         @endif
-                        @if(\Auth::user()->hasRole('Nutrisionista')||\Auth::user()->hasRole('Psicologos'))
+                        @if(\Auth::user()->hasRole('Nutricionista')||\Auth::user()->hasRole('Psicólogos'))
 
                         <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit" role="tabpanel">
                             <div class="table-responsive">
@@ -478,13 +475,13 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Correo</th>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">E-mail</th>
                                             <th scope="col">Estado</th>
-                                            <th scope="col">Posición</th>
-                                            <th scope="col">Equipo</th>
-                                            <th scope="col">Rol</th>
-                                            <th scope="col">Acción</th>
+                                            <th scope="col">Posição</th>
+                                            <th scope="col">Equipe</th>
+                                            <th scope="col">Função</th>
+                                            <th scope="col">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -494,14 +491,14 @@
                                             <td>{{$userPlayer->name}}</td>
                                             <td>{{$userPlayer->email}}</td>
                                             <td>{{$userPlayer->state->name}}</td>
-                                            <td>{{$userPlayer->position->name ?? 'Sin posición'}}</td>
+                                            <td>{{$userPlayer->position->name ?? 'Sem posição'}}</td>
                                             <td>
                                             @if($userPlayer->teams->isNotEmpty())
                                                 @foreach($userPlayer->teams as $team)
                                                     {{ $team->name }}{{ !$loop->last ? ',' : '' }}
                                                 @endforeach
                                             @else
-                                                Sin equipo
+                                                Sem equipe
                                             @endif
 
                                             </td>
@@ -567,5 +564,3 @@
     });
 </script>
 @endsection
-
-

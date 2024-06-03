@@ -1,20 +1,21 @@
 @extends('layouts.app')
-@section('title','Panel administrativo')
+@section('title','Painel administrativo')
 @section('content')
-@if(\Auth::user()->hasRole('Admin'))
+@if(\Auth::user()->hasRole('Administrador'))
     <div class="pagetitle">
-        <h1>Panel Administravo</h1>
+        <h1>Painel Administrativo</h1>
     </div>
 
     <section class="section dashboard">
         <div class="row">
+            <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
+                    <!-- Players Card -->
                     <div class="col-xxl-4 col-md-6 mb-4">
                         <div class="card info-card sales-card">
                             <div class="card-body">
-                                <h5 class="card-title">Jugadores (Atletas | Hoje)</h5>
-
+                                <h5 class="card-title">Jogadores (Atletas | Hoje)</h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
@@ -25,14 +26,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End Sales Card -->
+                    </div><!-- End Players Card -->
 
-                    <!-- Revenue Card -->
+                    <!-- Teams Card -->
                     <div class="col-xxl-4 col-md-6 mb-4">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
-                                <h5 class="card-title">Equipos (equipes)</h5>
-
+                                <h5 class="card-title">Equipes (equipes)</h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
@@ -43,38 +43,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End Revenue Card -->
-
-                    <!-- Customers Card -->
-                    <!-- <div class="col-xxl-4 col-xl-12 mb-4">
-                        <div class="card info-card customers-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Comissão</h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>1244</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- End Customers Card -->
+                    </div><!-- End Teams Card -->
 
                     <!-- Reports -->
                     <div class="col-12 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Jugadores por Posición(Reportes Gerales <span>| Hoje</span>)</h5>
+                                <h5 class="card-title">Jogadores por Posição (Relatórios Gerais <span>| Hoje</span>)</h5>
                                 <div id="reportsChart"></div>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", () => {
                                         var positionsData = @json($positionsData);
 
-                                        // Generar colores aleatorios
+                                        // Gerar cores aleatórias
                                         function getRandomColor() {
                                             var letters = '0123456789ABCDEF';
                                             var color = '#';
@@ -143,144 +124,62 @@
                                 </script>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- End Reports -->
-
+                    </div><!-- End Reports -->
                 </div>
             </div><!-- End Left side columns -->
 
-            @if(\Auth::user()->hasRole('Admin'))
             <!-- Right side columns -->
             <div class="col-lg-4">
-
-                <!-- Comissão Esportiva -->
+                <!-- User Roles -->
                 <div class="card">
-                <div class="card-body pb-0">
-                    <h5 class="card-title">Usuario por Roles (Comissão Esportiva<span>| Geral</span>)</h5>
-
-                    <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-                    <script>
-                        document.addEventListener("DOMContentLoaded", () => {
-                            var rolesData = @json($rolesData);
-                            echarts.init(document.querySelector("#trafficChart")).setOption({
-                                tooltip: {
-                                    trigger: 'item'
-                                },
-                                legend: {
-                                    top: '5%',
-                                    left: 'center'
-                                },
-                                series: [{
-                                    name: 'Access From',
-                                    type: 'pie',
-                                    radius: ['40%', '70%'],
-                                    avoidLabelOverlap: false,
-                                    label: {
-                                        show: false,
-                                        position: 'center'
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Usuário por Roles (Comissão Esportiva<span>| Geral</span>)</h5>
+                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                var rolesData = @json($rolesData);
+                                echarts.init(document.querySelector("#trafficChart")).setOption({
+                                    tooltip: {
+                                        trigger: 'item'
                                     },
-                                    emphasis: {
+                                    legend: {
+                                        top: '5%',
+                                        left: 'center'
+                                    },
+                                    series: [{
+                                        name: 'Access From',
+                                        type: 'pie',
+                                        radius: ['40%', '70%'],
+                                        avoidLabelOverlap: false,
                                         label: {
-                                            show: true,
-                                            fontSize: '18',
-                                            fontWeight: 'bold'
-                                        }
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    },
-                                    data: rolesData
-                                }]
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            label: {
+                                                show: true,
+                                                fontSize: '18',
+                                                fontWeight: 'bold'
+                                            }
+                                        },
+                                        labelLine: {
+                                            show: false
+                                        },
+                                        data: rolesData
+                                    }]
+                                });
                             });
-                        });
-                    </script>
-                </div>
-
-                </div><!-- End Website Traffic -->
-
+                        </script>
+                    </div>
+                </div><!-- End User Roles -->
             </div><!-- End Right side columns -->
-            @endif
-
         </div>
     </section>
 
-   
-    <!-- <section class="section">
-        <div class="row">
-            <div class="col-12">
-                <div class="card recent-sales overflow-auto">
-                    <div class="card-body">
-                        <h5 class="card-title">Dados Atletas</h5>
-
-                        <table class="table table-borderless datatable">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Posição</th>
-                                    <th scope="col">Equipe</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><a href="#">#2644</a></th>
-                                    <td>Raheem Lehner</td>
-                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                    <td>$165</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-@elseif(\Auth::user()->hasRole('Entrenador tecnico'))
+@elseif(\Auth::user()->hasRole('Treinador'))
     <div class="pagetitle">
-        <h1>Panel Administravo</h1>
+        <h1>Painel Administrativo</h1>
     </div>
 
-    <section class="section dashboard">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-xxl-4 col-md-6 mb-4">
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Mis jugadores</h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>{{$countPlayers}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-4 col-md-6 mb-4">
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Total Posiciones</h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>{{$positionsCount}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 @endif
 @endsection

@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title','Detalle del Equipo')
+@section('title','Detalhe da Equipe')
 @section('content')
 <div>
-    <h1>Detalle del Equipo</h1>
+    <h1>Detalhe da Equipe</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.teams.index')}}">Listado de Equipos</a></li>
-            <li class="breadcrumb-item active">Detalle del Equipo</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.teams.index')}}">Lista de Equipes</a></li>
+            <li class="breadcrumb-item active">Detalhe da Equipe</li>
         </ol>
     </nav>
 </div>
@@ -17,37 +17,37 @@
             
                 <div class="modal-body">
                     <div class="d-flex justify-content-end">
-                        <span class="text-danger mt-1">*</span><span>Campo requerido.</span>
+                        <span class="text-danger mt-1">*</span><span>Campo obrigatório.</span>
                     </div>
                     <div class="form-group">
-                        <label for="name"><span class="text-danger">*</span> Nombre:</label>
-                        <input type="text" disabled name="name" class="form-control form-control-border" id="name" placeholder="Nombre" value="{{ $team->name }}">
+                        <label for="name"><span class="text-danger">*</span> Nome:</label>
+                        <input type="text" disabled name="name" class="form-control form-control-border" id="name" placeholder="Nome" value="{{ $team->name }}">
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="user_id">Entrenador: <span class="text-danger mt-1">*</span></label>
-                        <select class="form-control " disabled name="user_id" id="user_id">
-                                <option  >{{ $team->userTeam->name ?? 'Sin entrenador'}}</option>
+                        <label for="user_id">Treinador: <span class="text-danger mt-1">*</span></label>
+                        <select class="form-control" disabled name="user_id" id="user_id">
+                                <option>{{ $team->userTeam->name ?? 'Sem treinador'}}</option>
                         </select>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="state_id">Estados: <span class="text-danger mt-1">*</span></label>
-                        <select class="form-control " disabled name="state_id" id="state_id">
-                                <option  >{{ $team->state->name }}</option>
+                        <label for="state_id">Estado: <span class="text-danger mt-1">*</span></label>
+                        <select class="form-control" disabled name="state_id" id="state_id">
+                                <option>{{ $team->state->name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="users">Jugadores:</label>
+                        <label for="users">Jogadores:</label>
                        @if($team->users->count() > 0)
                        <ol>
                             @foreach($team->users as  $user)
-                                    <li >{{$user->name  . ' | ' }} {{ $user->position->name ?? 'Sin posición'}}</li>
+                                    <li>{{$user->name . ' | ' }} {{ $user->position->name ?? 'Sem posição'}}</li>
                             @endforeach
                         </ol>
                         @else
-                        El equipo no cuenta con Jugadores
+                        A equipe não conta com jogadores
                        @endif
                     </div>
                     @error('users')
@@ -55,7 +55,7 @@
                     @enderror
                 </div>
                 <div class="d-flex mt-3">
-                    <a href="{{ route('admin.teams.index') }}" class="btn btn-secondary">Volver</a>
+                    <a href="{{ route('admin.teams.index') }}" class="btn btn-secondary">Voltar</a>
                 </div>
         </div>
     </div>

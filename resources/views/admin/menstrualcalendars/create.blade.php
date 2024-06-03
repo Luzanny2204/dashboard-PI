@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title','Creación del calendario menstrual')
+@section('title','Criação do calendário menstrual')
 @section('content')
 <div>
-    <h1>Creación del calendario menstrual</h1>
+    <h1>Criação do calendário menstrual</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.menstrualcalendars.index')}}">Listado de los calendarios menstruales</a></li>
-            <li class="breadcrumb-item active">Creación del calendario menstrual</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.menstrualcalendars.index')}}">Lista dos calendários menstruais</a></li>
+            <li class="breadcrumb-item active">Criação do calendário menstrual</li>
         </ol>
     </nav>
 </div>
@@ -19,11 +19,11 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="d-flex justify-content-end">
-                        <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                        <span class="text-danger mt-1">* </span><span>Campo obrigatório.</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="last_period"><span class="text-danger">*</span> Fecha último periodo:</label>
+                        <label for="last_period"><span class="text-danger">*</span> Data do último período:</label>
                         <input type="date" name="last_period" class="form-control form-control-border" id="last_period">
                     </div>
                     @error('last_period')
@@ -31,8 +31,8 @@
                     @enderror
 
                     <div class="form-group">
-                        <label for="duration"><span class="text-danger">*</span> Duración por días:</label>
-                        <input type="number" name="duration" class="form-control form-control-border" id="duration" placeholder="Duración">
+                        <label for="duration"><span class="text-danger">*</span> Duração em dias:</label>
+                        <input type="number" name="duration" class="form-control form-control-border" id="duration" placeholder="Duração">
                     </div>
                     @error('duration')
                     <span class="text-danger">{{$message}}</span>
@@ -47,28 +47,25 @@
                     @enderror
 
                     <div class="form-group">
-                        <label for="cervical_flux"><span class="text-danger">*</span> Fluido Cervical:</label>
-                        <input type="text" name="cervical_flux" class="form-control form-control-border" id="cervical_flux" placeholder="Fluido Cervical">
+                        <label for="cervical_flux"><span class="text-danger">*</span> Fluxo Cervical:</label>
+                        <input type="text" name="cervical_flux" class="form-control form-control-border" id="cervical_flux" placeholder="Fluxo Cervical">
                     </div>
                     @error('cervical_flux')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
 
                     <div class="form-group">
-                        <label for="sexual_activity"><span class="text-danger">*</span> Actividad sexual:</label>
-                        <input type="text" name="sexual_activity" class="form-control form-control-border" id="sexual_activity" placeholder="Actividad sexual">
+                        <label for="sexual_activity"><span class="text-danger">*</span> Atividade sexual:</label>
+                        <input type="text" name="sexual_activity" class="form-control form-control-border" id="sexual_activity" placeholder="Atividade sexual">
                     </div>
                     @error('sexual_activity')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
 
-                    
-
-
                     <div class="form-group mt-2">
-                        <label for="user_id">Usuarios:</label>
+                        <label for="user_id">Usuários:</label>
                         <select class="form-control createPlayers" name="user_id" id="user_id">
-                            <option value="" selected disabled>Seleccionar</option>
+                            <option value="" selected disabled>Selecionar</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
@@ -79,8 +76,8 @@
                     @enderror
                 </div>
                 <div class="d-flex mt-3">
-                    <a href="{{route('admin.menstrualcalendars.index')}}" class="btn btn-secondary" >Volver</a>
-                    <button type="submit" class="btn btn-primary  mx-2">Crear Calendario menstrual</button>
+                    <a href="{{route('admin.menstrualcalendars.index')}}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-primary mx-2">Criar Calendário Menstrual</button>
                 </div>
             </form>
         </div>
@@ -96,5 +93,3 @@
     });
 </script>
 @endsection
-
-

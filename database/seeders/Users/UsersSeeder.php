@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> 1,
             'state_id'=> 1,
-        ])->assignRole('Admin');
+        ])->assignRole('Administrador');
 
         User::create([
             'name'=> 'Laura',
@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> null,
             'state_id'=> 1,
-        ])->assignRole('Entrenador tecnico');
+        ])->assignRole('Treinador');
 
         User::create([
             'name'=> 'santiago',
@@ -37,7 +37,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> null,
             'state_id'=> 1,
-        ])->assignRole('Entrenador tecnico');
+        ])->assignRole('Treinador');
 
         User::create([
             'name'=> 'lucia',
@@ -45,7 +45,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> null,
             'state_id'=> 1,
-        ])->assignRole('Entrenador tecnico');
+        ])->assignRole('Treinador');
 
         User::create([
             'name'=> 'Mateo',
@@ -53,7 +53,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> null,
             'state_id'=> 1,
-        ])->assignRole('Nutrisionista');
+        ])->assignRole('Nutricionista');
 
         User::create([
             'name'=> 'Jorge',
@@ -77,7 +77,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> 1,
             'state_id'=> 1,
-        ])->assignRole('Jugadores');
+        ])->assignRole('Jogadoras');
 
         User::create([
             'name'=> 'jugador 1',
@@ -85,7 +85,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> 2,
             'state_id'=> 1,
-        ])->assignRole('Jugadores');
+        ])->assignRole('Jogadoras');
 
         User::create([
             'name'=> 'jugador 2',
@@ -93,7 +93,7 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> 1,
             'state_id'=> 1,
-        ])->assignRole('Jugadores');
+        ])->assignRole('Jogadoras');
 
         User::create([
             'name'=> 'jugador 3',
@@ -101,6 +101,6 @@ class UsersSeeder extends Seeder
             'password'=> Hash::make('123'),
             'position_id'=> 2,
             'state_id'=> 1,
-        ])->assignRole('Jugadores');
+        ])->assignRole('Jogadoras');
     }
 }

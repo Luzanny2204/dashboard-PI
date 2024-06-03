@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title','Creación de Equipo')
+@section('title','Criação de Equipe')
 @section('content')
 <div>
-    <h1>Creación de Equipo</h1>
+    <h1>Criação de Equipe</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.teams.index')}}">Listado de Equipo</a></li>
-            <li class="breadcrumb-item active">Creación de Equipo</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.teams.index')}}">Lista de Equipe</a></li>
+            <li class="breadcrumb-item active">Criação de Equipe</li>
         </ol>
     </nav>
 </div>
@@ -19,11 +19,11 @@
                 @method('POST')
                 <div class="modal-body">
                     <div class="d-flex justify-content-end">
-                        <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                        <span class="text-danger mt-1">* </span><span>Campo obrigatório.</span>
                     </div>
                     <div class="form-group">
-                        <label for="name"><span class="text-danger">*</span> Nombre:</label>
-                        <input type="text" name="name" class="form-control form-control-border" id="name" placeholder="Nombre">
+                        <label for="name"><span class="text-danger">*</span> Nome:</label>
+                        <input type="text" name="name" class="form-control form-control-border" id="name" placeholder="Nome">
                     </div>
                     @error('name')
                     <span class="text-danger">{{$message}}</span>
@@ -31,8 +31,8 @@
 
                     <div class="form-group mt-2">
                         <label for="state_id">Estados: <span class="text-danger mt-1">* </span></label>
-                        <select class="form-control " name="state_id" id="state_id">
-                            <option value="">--Seleccionar estado--</option>
+                        <select class="form-control" name="state_id" id="state_id">
+                            <option value="">--Selecionar estado--</option>
                             @foreach($states as $state)
                                 <option value="{{$state->id}}" {{ old('state_id') == $state->id ? 'selected' : '' }}>{{$state->name}}</option>
                             @endforeach
@@ -43,9 +43,9 @@
                     @enderror
 
                     <div class="form-group mt-2">
-                        <label for="user_id">Entrenador Técnico:</label>
-                        <select class="form-control createTecTrainer" name="user_id" id="user_id" >
-                            <option value="">--Seleccionar estado--</option>
+                        <label for="user_id">Treinador Técnico:</label>
+                        <select class="form-control createTecTrainer" name="user_id" id="user_id">
+                            <option value="">--Selecionar estado--</option>
                             @foreach($usersTecTrainers as $usersTecTrainer)
                                 <option value="{{$usersTecTrainer->id}}">{{$usersTecTrainer->name}}</option>
                             @endforeach
@@ -55,12 +55,10 @@
                         <span class="text-danger">{{$message}}</span>
                     @enderror
 
-
-
                     <div class="form-group mt-2">
-                        <label for="users">Jugadores:</label>
+                        <label for="users">Jogadores:</label>
                         <select class="form-control createPlayers" name="users[]" id="users" multiple>
-                            <option value="">--Seleccionar estado--</option>
+                            <option value="">--Selecionar estado--</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
@@ -71,8 +69,8 @@
                     @enderror
                 </div>
                 <div class="d-flex mt-3">
-                    <a href="{{route('admin.teams.index')}}" class="btn btn-secondary" >Volver</a>
-                    <button type="submit" class="btn btn-primary  mx-2">Crear Equipo</button>
+                    <a href="{{route('admin.teams.index')}}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-primary mx-2">Criar Equipe</button>
                 </div>
             </form>
         </div>
@@ -88,11 +86,8 @@
     });
 </script>
 <script>
-   
     $(document).ready(function() {
         $('.createPlayers').select2();
     });
 </script>
 @endsection
-
-

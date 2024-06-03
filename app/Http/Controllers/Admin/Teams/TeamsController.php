@@ -9,7 +9,7 @@ use App\Models\Team\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-
+use Illuminate\Support\Facades\Auth;
 
 class TeamsController extends Controller
 {
@@ -24,7 +24,12 @@ class TeamsController extends Controller
     
     public function index()
     {
-        $teams = Team::all();
+        $id = Auth::user()->id;
+        if(Auth::user()->hasRole('Administrador')){
+            $teams = Team::all();
+        }elseif(Auth::user()->hasRole('Treinador')){
+            $teams = Team::where('user_id',$id)->get();
+        }
         $states = State::all();
         return view('admin.teams.index',compact('teams','states'));
     }

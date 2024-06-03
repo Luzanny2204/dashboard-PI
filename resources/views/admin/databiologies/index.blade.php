@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Listado de Datos Biológicos')
+@section('title','Lista de Dados Biológicos')
 @section('content')
 <div>
-    <h1>Listado de Datos Biológicos</h1>
+    <h1>Lista de Dados Biológicos</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item active">Listado de Datos Biológicos</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item active">Lista de Dados Biológicos</li>
         </ol>
     </nav>
 </div>
@@ -15,7 +15,7 @@
         <div class="col-12">
             @can('admin.databiologies.create')
                 <a class="btn btn-primary" href="{{route('admin.databiologies.create')}}">
-                    Crear Dato Biológico
+                    Criar Dado Biológico
                 </a>
             @endcan
         </div>
@@ -28,10 +28,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Velocidad</th>
-                                    <th scope="col">Resistencia</th>
-                                    <th scope="col">Acción</th>
+                                    <th scope="col">Usuário</th>
+                                    <th scope="col">Velocidade</th>
+                                    <th scope="col">Resistência</th>
+                                    <th scope="col">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,5 +79,3 @@
 @section('script')
 
 @endsection
-
-

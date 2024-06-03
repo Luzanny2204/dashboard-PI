@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title','Detalle de la fisioterapia')
+@section('title','Detalhe da fisioterapia')
 @section('content')
 <div>
-    <h1>Detalle de la fisioterapia</h1>
+    <h1>Detalhe da fisioterapia</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.physiotherapists.index')}}">Listado de la fisioterapia</a></li>
-            <li class="breadcrumb-item active">Detalle de la fisioterapia</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.physiotherapists.index')}}">Lista de fisioterapias</a></li>
+            <li class="breadcrumb-item active">Detalhe da fisioterapia</li>
         </ol>
     </nav>
 </div>
@@ -16,17 +16,17 @@
         <div class="col-12">
             <div class="modal-body">
                 <div class="d-flex justify-content-end">
-                    <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                    <span class="text-danger mt-1">* </span><span>Campo obrigatório.</span>
                 </div>
                 <div class="form-group">
-                    <label for="consultation_date">Fecha consulta:</label>
-                    <input type="date" disabled name="consultation_date" value="{{$physiotherapist->consultation_date}}" class="form-control form-control-border" id="consultation_date" placeholder="Nombre">
+                    <label for="consultation_date">Data da consulta:</label>
+                    <input type="date" disabled name="consultation_date" value="{{$physiotherapist->consultation_date}}" class="form-control form-control-border" id="consultation_date" placeholder="Nome">
                 </div>
              
 
 
                 <div class="form-group mt-2">
-                    <label for="user_id"> Jugador:</label>
+                    <label for="user_id"> Jogador:</label>
                     <select class="form-control createPlayer" disabled name="user_id" id="user_id" >
                             <option value="{{$physiotherapist->user->id}}" >{{$physiotherapist->user->name}}</option>
                     </select>
@@ -37,7 +37,7 @@
 
                 <div class="row mt-2">
                   <div class="col-12">
-                    <label > Descripcion:</label>
+                    <label > Descrição:</label>
                   </div>
 
                     <div class="col-12 mt-2 mb-2">
@@ -48,7 +48,7 @@
                 
             </div>
             <div class="d-flex mt-3">
-                <a href="{{route('admin.physiotherapists.index')}}" class="btn btn-secondary" >Volver</a>
+                <a href="{{route('admin.physiotherapists.index')}}" class="btn btn-secondary">Voltar</a>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
 
 <script>
     $('#description').summernote({
-        placeholder: 'Describa aquí la situación del paciente',
+        placeholder: 'Descreva aqui a situação do paciente',
         tabsize: 2,
         height: 120,
         toolbar: [
@@ -80,5 +80,3 @@
     });
 </script>
 @endsection
-
-

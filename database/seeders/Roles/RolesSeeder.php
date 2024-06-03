@@ -15,223 +15,213 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
-        $role1 = Role::create(['name' => 'Admin']);
-        $role2 = Role::create(['name' => 'Entrenador tecnico']);
-        $role3 = Role::create(['name' => 'Nutrisionista']);
+        $role1 = Role::create(['name' => 'Administrador']);
+        $role2 = Role::create(['name' => 'Treinador']);
+        $role3 = Role::create(['name' => 'Nutricionista']);
         $role4 = Role::create(['name' => 'Psicologos']);
         $role5 = Role::create(['name' => 'Fisioterapeutas']);
-        $role6 = Role::create(['name' => 'Jugadores']);
+        $role6 = Role::create(['name' => 'Jogadoras']);
 
-
-        //Permiso admin Dashboard
+        //Permissão admin Dashboard
         Permission::create([
             'name' => 'admin.dashboard',
-            'description'=> 'Ver panel administrativo ( Admin )'
-        ])->syncRoles([$role1,$role2,$role3,$role4,$role5]);
+            'description'=> 'Ver painel administrativo (Admin)'
+        ])->syncRoles([$role1, $role2, $role3, $role4, $role5]);
 
-        //Permiso User Dashboard
+        //Permissão User Dashboard
         Permission::create([
             'name' => 'dashboard',
-            'description'=> 'Ver panel administrativo de los jugadores'
+            'description'=> 'Ver painel administrativo dos jogadores'
         ])->syncRoles([$role1, $role6]);
 
-        
-
-         //Permisos admin Estados
-         Permission::create([
+        //Permissões admin Estados
+        Permission::create([
             'name' => 'admin.states.index',
-            'description'=> 'Lista de estados '
+            'description'=> 'Lista de estados'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.states.create',
-            'description'=> 'Creación de estados'
+            'description'=> 'Criação de estados'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.states.edit',
-            'description'=> 'Edición de estados'
+            'description'=> 'Edição de estados'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.states.destroy',
-            'description'=> 'Eliminar estados'
+            'description'=> 'Excluir estados'
         ])->syncRoles([$role1]);
 
-        //Permisos admin roles
+        //Permissões admin roles
         Permission::create([
             'name' => 'admin.roles.index',
-            'description'=> 'Listado de roles'
+            'description'=> 'Lista de roles'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.roles.create',
-            'description'=> 'Creación del rol'
+            'description'=> 'Criação de role'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.roles.edit',
-            'description'=> 'Edición del rol'
+            'description'=> 'Edição de role'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.roles.show',
-            'description'=> 'Detalle del rol'
+            'description'=> 'Detalhe do role'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.roles.destroy',
-            'description'=> 'Eliminación del rol'
+            'description'=> 'Excluir role'
         ])->syncRoles([$role1]);
 
-
-
-         //Permisos admin positions
-         Permission::create([
+        //Permissões admin positions
+        Permission::create([
             'name' => 'admin.positions.index',
-            'description'=> 'Listado de posiciones'
+            'description'=> 'Lista de posições'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.positions.create',
-            'description'=> 'Creación de la posicion'
+            'description'=> 'Criação de posição'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.positions.edit',
-            'description'=> 'Edición de la posicion'
+            'description'=> 'Edição de posição'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.positions.show',
-            'description'=> 'Detalle de la posicion'
+            'description'=> 'Detalhe da posição'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.positions.destroy',
-            'description'=> 'Eliminación de la posicion'
+            'description'=> 'Excluir posição'
         ])->syncRoles([$role1]);
 
-         //Permisos admin teams
-         Permission::create([
+        //Permissões admin teams
+        Permission::create([
             'name' => 'admin.teams.index',
-            'description'=> 'Listado de los Equipos'
-        ])->syncRoles([$role1]);
+            'description'=> 'Lista de equipes'
+        ])->syncRoles([$role1,$role2]);
         Permission::create([
             'name' => 'admin.teams.create',
-            'description'=> 'Creación del equipo'
+            'description'=> 'Criação de equipe'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.teams.edit',
-            'description'=> 'Edición del equipo'
+            'description'=> 'Edição de equipe'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.teams.show',
-            'description'=> 'Detalle del equipo'
-        ])->syncRoles([$role1]);
+            'description'=> 'Detalhe da equipe'
+        ])->syncRoles([$role1,$role2]);
         Permission::create([
             'name' => 'admin.teams.destroy',
-            'description'=> 'Eliminación del equipo'
+            'description'=> 'Excluir equipe'
         ])->syncRoles([$role1]);
 
-
-         //Permisos admin user
-         Permission::create([
+        //Permissões admin user
+        Permission::create([
             'name' => 'admin.users.index',
-            'description'=> 'Listado de los usuarios'
-        ])->syncRoles([$role1,$role3,$role4]);
+            'description'=> 'Lista de usuários'
+        ])->syncRoles([$role1, $role3, $role4]);
         Permission::create([
             'name' => 'admin.users.create',
-            'description'=> 'Creación del usuario'
+            'description'=> 'Criação de usuário'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.users.edit',
-            'description'=> 'Edición del usuario'
+            'description'=> 'Edição de usuário'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.users.show',
-            'description'=> 'Detalle del usuario'
-        ])->syncRoles([$role1,$role3,$role4]);
+            'description'=> 'Detalhe do usuário'
+        ])->syncRoles([$role1, $role3, $role4]);
         Permission::create([
             'name' => 'admin.users.destroy',
-            'description'=> 'Eliminación del usuario'
+            'description'=> 'Excluir usuário'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.users.nutri',
-            'description'=> 'Informacion Nutricionista'
-        ])->syncRoles([$role1,$role3]);
+            'description'=> 'Informação Nutricionista'
+        ])->syncRoles([$role1, $role3]);
         Permission::create([
             'name' => 'admin.users.psico',
-            'description'=> 'Informacion Psicologo'
-        ])->syncRoles([$role1,$role4]);
+            'description'=> 'Informação Psicólogo'
+        ])->syncRoles([$role1, $role4]);
 
-
-         //Permisos admin databiologies
-         Permission::create([
+        //Permissões admin databiologies
+        Permission::create([
             'name' => 'admin.databiologies.index',
-            'description'=> 'Listado de datos biológicos'
+            'description'=> 'Lista de dados biológicos'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.databiologies.create',
-            'description'=> 'Creación del dato biológico'
+            'description'=> 'Criação de dado biológico'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.databiologies.edit',
-            'description'=> 'Edición del dato biológico'
+            'description'=> 'Edição de dado biológico'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.databiologies.show',
-            'description'=> 'Detalle del dato biológico'
+            'description'=> 'Detalhe do dado biológico'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.databiologies.destroy',
-            'description'=> 'Eliminación del dato biológico'
+            'description'=> 'Excluir dado biológico'
         ])->syncRoles([$role1]);
 
-
-         //Permisos admin menstrualcalendars
-         Permission::create([
+        //Permissões admin menstrualcalendars
+        Permission::create([
             'name' => 'admin.menstrualcalendars.index',
-            'description'=> 'Listado de los calendarios menstruales'
+            'description'=> 'Lista de calendários menstruais'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.menstrualcalendars.create',
-            'description'=> 'Creación del calendario menstrual'
+            'description'=> 'Criação de calendário menstrual'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.menstrualcalendars.edit',
-            'description'=> 'Edición del calendario menstrual'
+            'description'=> 'Edição de calendário menstrual'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.menstrualcalendars.show',
-            'description'=> 'Detalle del calendario menstrual'
+            'description'=> 'Detalhe do calendário menstrual'
         ])->syncRoles([$role1]);
         Permission::create([
             'name' => 'admin.menstrualcalendars.destroy',
-            'description'=> 'Eliminación del calendario menstrual'
+            'description'=> 'Excluir calendário menstrual'
         ])->syncRoles([$role1]);
 
-        //Permisos nutricionista
-
+        //Permissões nutricionista
         Permission::create([
             'name' => 'admin.nutritionists.edit',
-            'description'=> 'Editar informacion Nutricion'
-        ])->syncRoles([$role1,$role3]);
+            'description'=> 'Editar informação Nutricionista'
+        ])->syncRoles([$role1, $role3]);
         Permission::create([
             'name' => 'admin.psicologies.edit',
-            'description'=> 'Editar informacion Psicologo'
-        ])->syncRoles([$role1,$role4]);
+            'description'=> 'Editar informação Psicólogo'
+        ])->syncRoles([$role1, $role4]);
 
-
-         //Permisos admin physiotherapists
-         Permission::create([
+        //Permissões admin physiotherapists
+        Permission::create([
             'name' => 'admin.physiotherapists.index',
-            'description'=> 'Listado de los fisioterapias'
-        ])->syncRoles([$role1,$role5]);
+            'description'=> 'Lista de fisioterapias'
+        ])->syncRoles([$role1, $role5]);
         Permission::create([
             'name' => 'admin.physiotherapists.create',
-            'description'=> 'Creación de la fisioterapia'
-        ])->syncRoles([$role1,$role5]);
+            'description'=> 'Criação de fisioterapia'
+        ])->syncRoles([$role1, $role5]);
         Permission::create([
             'name' => 'admin.physiotherapists.edit',
-            'description'=> 'Edición de la fisioterapia'
-        ])->syncRoles([$role1,$role5]);
+            'description'=> 'Edição de fisioterapia'
+        ])->syncRoles([$role1, $role5]);
         Permission::create([
             'name' => 'admin.physiotherapists.show',
-            'description'=> 'Detalle de la fisioterapia'
-        ])->syncRoles([$role1,$role5]);
+            'description'=> 'Detalhe da fisioterapia'
+        ])->syncRoles([$role1, $role5]);
         Permission::create([
             'name' => 'admin.physiotherapists.destroy',
-            'description'=> 'Eliminación de la fisioterapia'
-        ])->syncRoles([$role1,$role5]);
+            'description'=> 'Excluir fisioterapia'
+        ])->syncRoles([$role1, $role5]);
     }
 }

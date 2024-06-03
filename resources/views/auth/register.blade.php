@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -38,7 +38,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Performance</span>
+                  <span class="d-none d-lg-block">Performance Max</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -65,11 +65,30 @@
                             <label for="yourPassword" class="form-label">Senha</label>
                             <input type="password" name="password" class="form-control" id="yourPassword" required>
                         </div>
+
+
                         <div class="col-12">
-                            <label for="cargo" class="form-label">Cargo</label>
-                            <select name="cargo" class="form-select" id="cargo" required>
-                                <option value="" disabled selected>Seleccione su cargo</option>
-                                <option value="Gerente">Gerente</option>
+                            <label for="weight" class="form-label">weight</label>
+                            <input type="text" name="weight" class="form-control" id="weight" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="height" class="form-label">height</label>
+                            <input type="text" name="height" class="form-control" id="height" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="phone" class="form-label">phone</label>
+                            <input type="text" name="phone" class="form-control" id="phone" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="position_id" class="form-label">Position</label>
+                            <select name="position_id" class="form-select" id="position_id" required>
+                                <option value="" disabled selected>Selecione seu posicion</option>
+                                @foreach($positions as $position)
+                                  <option value="{{$position->id}}">{{$position->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 

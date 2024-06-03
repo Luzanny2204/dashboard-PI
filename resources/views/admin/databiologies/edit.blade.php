@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title','Edición del dato biológico')
+@section('title','Edição do dado biológico')
 @section('content')
 <div>
-    <h1>Edición del dato biológico</h1>
+    <h1>Edição do dado biológico</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Panel administrativo</a></li>
-            <li class="breadcrumb-item"><a href="{{route('admin.databiologies.index')}}">Listado de datos biológicos</a></li>
-            <li class="breadcrumb-item active">Edición del dato biológico</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Painel administrativo</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.databiologies.index')}}">Lista de dados biológicos</a></li>
+            <li class="breadcrumb-item active">Edição do dado biológico</li>
         </ol>
     </nav>
 </div>
@@ -19,7 +19,7 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="d-flex justify-content-end">
-                        <span class="text-danger mt-1">* </span><span>Campo requerido.</span>
+                        <span class="text-danger mt-1">* </span><span>Campo obrigatório.</span>
                     </div>
 
                     <div class="form-group">
@@ -47,24 +47,24 @@
                     @enderror
 
                     <div class="form-group">
-                        <label for="endurance"><span class="text-danger">*</span> Resistencia:</label>
-                        <input type="text" value="{{$databiology->endurance}}" name="endurance" class="form-control form-control-border" id="endurance" placeholder="Resistencia">
+                        <label for="endurance"><span class="text-danger">*</span> Resistência:</label>
+                        <input type="text" value="{{$databiology->endurance}}" name="endurance" class="form-control form-control-border" id="endurance" placeholder="Resistência">
                     </div>
                     @error('endurance')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
 
                     <div class="form-group">
-                        <label for="speed"><span class="text-danger">*</span> Velocidad:</label>
-                        <input type="text" value="{{$databiology->speed}}" name="speed" class="form-control form-control-border" id="speed" placeholder="Velocidad">
+                        <label for="speed"><span class="text-danger">*</span> Velocidade:</label>
+                        <input type="text" value="{{$databiology->speed}}" name="speed" class="form-control form-control-border" id="speed" placeholder="Velocidade">
                     </div>
                     @error('speed')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
 
                     <div class="form-group">
-                        <label for="flexibility"><span class="text-danger">*</span> Flexibilidad:</label>
-                        <input type="text" value="{{$databiology->flexibility}}" name="flexibility" class="form-control form-control-border" id="flexibility" placeholder="Flexibilidad">
+                        <label for="flexibility"><span class="text-danger">*</span> Flexibilidade:</label>
+                        <input type="text" value="{{$databiology->flexibility}}" name="flexibility" class="form-control form-control-border" id="flexibility" placeholder="Flexibilidade">
                     </div>
                     @error('flexibility')
                     <span class="text-danger">{{$message}}</span>
@@ -78,7 +78,6 @@
                     <span class="text-danger">{{$message}}</span>
                     @enderror
 
-
                     <div class="form-group">
                         <label for="imc"><span class="text-danger">*</span> IMC:</label>
                         <input type="text" value="{{$databiology->imc}}" name="imc" class="form-control form-control-border" id="imc" placeholder="IMC">
@@ -87,11 +86,10 @@
                     <span class="text-danger">{{$message}}</span>
                     @enderror
 
-
                     <div class="form-group mt-2">
-                        <label for="user_id">Usuarios:</label>
+                        <label for="user_id">Usuários:</label>
                         <select class="form-control createPlayers" name="user_id" id="user_id">
-                            <option value="" selected disabled>Seleccionar</option>
+                            <option value="" selected disabled>Selecionar</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}" {{ $user->id == $databiology->user_id ? 'selected' : '' }}>{{$user->name}}</option>
                             @endforeach
@@ -102,8 +100,8 @@
                     @enderror
                 </div>
                 <div class="d-flex mt-3">
-                    <a href="{{route('admin.databiologies.index')}}" class="btn btn-secondary" >Volver</a>
-                    <button type="submit" class="btn btn-warning  mx-2">Editar Dato Biológico</button>
+                    <a href="{{route('admin.databiologies.index')}}" class="btn btn-secondary" >Voltar</a>
+                    <button type="submit" class="btn btn-warning  mx-2">Editar Dado Biológico</button>
                 </div>
             </form>
         </div>
@@ -119,5 +117,3 @@
     });
 </script>
 @endsection
-
-

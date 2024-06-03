@@ -38,7 +38,7 @@ class PsicologiesCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'description.nullable' => 'La descripcion es obligatoria',
+            'description.nullable' => 'A despcrição é obrigatoria',
         ];
     }
 }

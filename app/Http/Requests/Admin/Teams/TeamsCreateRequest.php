@@ -41,9 +41,10 @@ class TeamsCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre del equipo es obligatorio',
-            'state_id.required' => 'El estado del equipo es obligatorio',
-            'user_id.nullable' => 'El entrenador técnico del equipo no es obligatorio',
+            'name.required' => 'O nome da equipe é obrigatório',
+            'state_id.required' => 'O estado da equipe é obrigatório',
+            'user_id.nullable' => 'O treinador técnico da equipe não é obrigatório',
         ];
     }
+    
 }

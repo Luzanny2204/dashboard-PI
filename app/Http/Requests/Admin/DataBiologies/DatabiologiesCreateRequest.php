@@ -50,17 +50,18 @@ class DatabiologiesCreateRequest extends FormRequest
     }
 
     public function messages()
-    {
-        return [
-            'waist.required' => 'El campo de Cintura es obligaorio',
-            'quadril.required' => 'El campo de Quadril es obligaorio',
-            'bust.required' => 'El campo de Busto es obligaorio',
-            'endurance.required' => 'El campo de Resistencia es obligaorio',
-            'speed.required' => 'El campo de Velocidad es obligaorio',
-            'flexibility.required' => 'El campo de Flexibilidad es obligaorio',
-            'temperature.required' => 'El campo de Temperatura es obligaorio',
-            'imc.required' => 'El campo de IMC es obligaorio',
-            'user_id.required' => 'El campo de Usuario es obligaorio',
-        ];
-    }
+        {
+            return [
+                'waist.required' => 'O campo de Cintura é obrigatório',
+                'quadril.required' => 'O campo de Quadril é obrigatório',
+                'bust.required' => 'O campo de Busto é obrigatório',
+                'endurance.required' => 'O campo de Resistência é obrigatório',
+                'speed.required' => 'O campo de Velocidade é obrigatório',
+                'flexibility.required' => 'O campo de Flexibilidade é obrigatório',
+                'temperature.required' => 'O campo de Temperatura é obrigatório',
+                'imc.required' => 'O campo de IMC é obrigatório',
+                'user_id.required' => 'O campo de Usuário é obrigatório',
+            ];
+        }
+
 }

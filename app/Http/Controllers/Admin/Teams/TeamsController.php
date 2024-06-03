@@ -66,7 +66,7 @@ class TeamsController extends Controller
             }
             $team->users()->sync($userData);
         }
-        return redirect()->route('admin.teams.index')->with('success', 'El equipo se a creado correctamente.');
+        return redirect()->route('admin.teams.index')->with('success', 'O equipe foi criado com sucesso.');
     }
 
   
@@ -120,7 +120,7 @@ class TeamsController extends Controller
                 $team->users()->detach();
             }
         
-            return redirect()->route('admin.teams.index')->with('success', 'El equipo se ha actualizado correctamente.');
+            return redirect()->route('admin.teams.index')->with('success', 'O equipe foi editado com sucesso.');
         } catch (QueryException $e) {
             return $e;
         }
@@ -131,6 +131,6 @@ class TeamsController extends Controller
     {
         $team->users()->detach();
         $team->delete();
-        return redirect()->route('admin.teams.index')->with('delete', 'El equipo se a eliminado correctamente.');
+        return redirect()->route('admin.teams.index')->with('delete', 'O equipe foi deletado com sucesso.');
     }
 }

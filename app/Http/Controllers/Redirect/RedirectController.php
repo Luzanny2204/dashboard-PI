@@ -16,7 +16,7 @@ class RedirectController extends Controller
             return redirect()->route('dashboard');
         }else{
             Auth::logout();
-            return redirect()->route('login')->with('info', 'No tiene los permisos requeridos para ingresar al sistema comuniquese con la mesa de ayuda.');
+            return redirect()->route('login')->with('info', 'Você não tem as permissões necessárias para acessar o sistema. Por favor, entre em contato com a mesa de ajuda.');
         }
     }
 }

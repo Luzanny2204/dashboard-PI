@@ -43,7 +43,7 @@ class RolesController extends Controller
         $role = Role::create($request->all());
 
         $role->permissions()->sync($request->permissions);
-        return redirect()->route('admin.roles.index', $role)->with('info', 'El rol se creo con exito');
+        return redirect()->route('admin.roles.index', $role)->with('info', 'O papel foi criado com sucesso.');
     }
 
 
@@ -76,24 +76,24 @@ class RolesController extends Controller
         ]);
         $role->update($request->all());
         $role->permissions()->sync($request->permissions);
-        return redirect()->route('admin.roles.index')->with('edit', 'El rol se edito correctamente.');
+        return redirect()->route('admin.roles.index')->with('edit', 'O papel foi editado com sucesso.');
     }
 
     public function destroy(Role $role)
     {
         if ($role->id <= 2) {
-            return redirect()->route('admin.roles.index')->with('info', 'Este rol no se puede eliminar ya que es uno de los principales en el sistema');
+            return redirect()->route('admin.roles.index')->with('info', 'Este papel não pode ser excluído, pois é um dos principais no sistema.');
         }
 
         if ($role->users()->count() > 0) {
-            return redirect()->route('admin.roles.index')->with('info', 'El rol no se puede eliminar, ya que tiene usuarios asociados.');
+            return redirect()->route('admin.roles.index')->with('info', 'O papel não pode ser excluído, pois tem usuários associados.');
         }
 
         try {
             $role->delete();
-            return redirect()->route('admin.roles.index')->with('delete', 'El rol se eliminó correctamente.');
+            return redirect()->route('admin.roles.index')->with('delete', 'O papel foi deletado com sucesso.');
         } catch (QueryException $e) {
-            return redirect()->route('admin.roles.index')->with('error', 'Ocurrió un error al intentar eliminar el rol.');
+            return redirect()->route('admin.roles.index')->with('error', 'Ocorreu um erro ao tentar excluir o papel.');
         }
     }
 

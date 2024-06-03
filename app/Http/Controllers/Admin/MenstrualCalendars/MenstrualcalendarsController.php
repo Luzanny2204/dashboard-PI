@@ -34,7 +34,7 @@ class MenstrualcalendarsController extends Controller
     public function store(MenstrualcalendarsCreateRequest $request)
     {
         Menstrualcalendar::create($request->all());
-        return redirect()->route('admin.menstrualcalendars.index')->with('success', 'El calendario menstrual se a creado correctamente.');
+        return redirect()->route('admin.menstrualcalendars.index')->with('success', 'Calendario Menstrual criado');
     }
 
 
@@ -52,12 +52,12 @@ class MenstrualcalendarsController extends Controller
     public function update(MenstrualcalendarsCreateRequest $request, Menstrualcalendar $menstrualcalendar)
     {
         $menstrualcalendar->update($request->all());
-        return redirect()->route('admin.menstrualcalendars.index')->with('edit', 'El dato biológico se a editado correctamente.');
+        return redirect()->route('admin.menstrualcalendars.index')->with('edit', 'Calendario Menstrual editado');
     }
 
     public function destroy(Menstrualcalendar $menstrualcalendar)
     {
         $menstrualcalendar->delete();
-        return redirect()->route('admin.menstrualcalendars.index')->with('delete', 'El dato biológico se a eliminado correctamente.');
+        return redirect()->route('admin.menstrualcalendars.index')->with('delete', 'Calendario Menstrual deletado');
     }
 }

@@ -15,10 +15,10 @@ class NutritionistsController extends Controller
         $nutrition= nutritionist::where('user_id', $id)->first();
         if($nutrition ){
             $nutrition->update($request->all());
-            return redirect()->route('admin.users.show',$id)->with('success','La descripcion de la Nutricion fue editada');
+            return redirect()->route('admin.users.show',$id)->with('success','Descripção editada');
         }else{
             nutritionist::create($request->all());
-            return redirect()->route('admin.users.show',$id)->with('success','La descripcion de la Nutricion fue creada');
+            return redirect()->route('admin.users.show',$id)->with('success','Descripção criada');
 
         }
     }

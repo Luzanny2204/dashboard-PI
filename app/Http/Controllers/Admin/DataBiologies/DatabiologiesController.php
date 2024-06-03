@@ -36,12 +36,12 @@ class DatabiologiesController extends Controller
         $existingDatabiology = Databiology::where('user_id', $request->user_id)->first();
 
         if ($existingDatabiology) {
-            return redirect()->route('admin.databiologies.index')->with('info', 'No es posible crear la información biológica porque ya existe un registro para este usuario.');
+            return redirect()->route('admin.databiologies.index')->with('info', 'Dado existente');
         }
     
         Databiology::create($request->all());
 
-        return redirect()->route('admin.databiologies.index')->with('success', 'El dato biológico se a creado correctamente.');
+        return redirect()->route('admin.databiologies.index')->with('success', 'Dado criado');
     }
 
 
@@ -59,12 +59,12 @@ class DatabiologiesController extends Controller
     public function update(DatabiologiesCreateRequest $request, Databiology $databiology)
     {
         $databiology->update($request->all());
-        return redirect()->route('admin.databiologies.index')->with('edit', 'El dato biológico se a editado correctamente.');
+        return redirect()->route('admin.databiologies.index')->with('edit', 'Dado editado');
     }
 
     public function destroy(Databiology $databiology)
     {
         $databiology->delete();
-        return redirect()->route('admin.databiologies.index')->with('delete', 'El dato biológico se a eliminado correctamente.');
+        return redirect()->route('admin.databiologies.index')->with('delete', 'Dado deletado');
     }
 }

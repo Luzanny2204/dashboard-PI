@@ -36,7 +36,7 @@ class StatesController extends Controller
     public function store(StatesCreateRequest $request)
     {
         State::create($request->all());
-        return redirect()->route('admin.states.index')->with('success', 'El estado se a creado correctamente.');
+        return redirect()->route('admin.states.index')->with('success', 'O estado foi criado com sucesso');
     }
 
   
@@ -55,7 +55,7 @@ class StatesController extends Controller
     public function update(StatesCreateRequest $request, State $state)
     {
         $state->update($request->all());
-        return redirect()->route('admin.states.index')->with('edit', 'El estado se a editado correctamente.');
+        return redirect()->route('admin.states.index')->with('edit', 'O estado foi editado com sucesso');
     }
 
     
@@ -63,12 +63,12 @@ class StatesController extends Controller
     {
         try {
             $state->delete();
-            return redirect()->route('admin.states.index')->with('delete', 'El estado se a eliminado correctamente.');
+            return redirect()->route('admin.states.index')->with('delete', 'O estado foi deletado com sucesso');
         } catch (QueryException $e) {
             if ($e->getCode() == 23000) { 
-                return redirect()->route('admin.states.index')->with('info', 'No es posible eliminar el estado porque está asociada a uno o más registros.');
+                return redirect()->route('admin.states.index')->with('info', 'Não é possível excluir o estado porque está associado a um ou mais registros.');
             }
-            return redirect()->route('admin.states.index')->with('info', 'Ocurrió un error al intentar eliminar el estado.');
+            return redirect()->route('admin.states.index')->with('info', 'Ocorreu um erro ao tentar excluir o estado.');
         }
     }
 }

@@ -110,7 +110,7 @@ class UsersController extends Controller
             }
         }
 
-        return redirect()->route('admin.users.index')->with('success', 'El Usuario se ha creado correctamente.');
+        return redirect()->route('admin.users.index')->with('success', 'O usuario foi criado com sucesso');
     }
 
     
@@ -185,23 +185,23 @@ class UsersController extends Controller
             }
         }
     
-        return redirect()->route('admin.users.index')->with('success', 'El Usuario se ha actualizado correctamente.');
+        return redirect()->route('admin.users.index')->with('success', 'O usuario foi editado com sucesso.');
     }
     
 
     public function destroy(User $user)
     {
         if ($user->id === 1) {
-            return redirect()->route('admin.users.index')->with('info', 'Este usuario no se puede eliminar ya que es uno de los principales en el sistema');
+            return redirect()->route('admin.users.index')->with('info', 'Este usuário não pode ser excluído, pois é um dos principais no sistema.');
         }
     
         try {
             $user->roles()->detach();
             $user->teams()->detach();
             $user->delete();
-            return redirect()->route('admin.users.index')->with('delete', 'El Usuario se ha eliminado correctamente.');
+            return redirect()->route('admin.users.index')->with('delete', 'O usuario foi deletado com sucesso.');
         } catch (QueryException $e) {
-            return redirect()->route('admin.users.index')->with('error', 'No se pudo eliminar el usuario debido a restricciones de integridad referencial.');
+            return redirect()->route('admin.users.index')->with('error', 'Não foi possível excluir o usuário devido a restrições de integridade referencial.');
         }
     }
     

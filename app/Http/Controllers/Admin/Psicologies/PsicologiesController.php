@@ -14,10 +14,10 @@ class PsicologiesController extends Controller
         $nutrition= Psicology::where('user_id', $id)->first();
         if($nutrition ){
             $nutrition->update($request->all());
-            return redirect()->route('admin.users.show',$id)->with('success','La descripcion de la Psicología fue editada');
+            return redirect()->route('admin.users.show',$id)->with('success','Descripção editada');
         }else{
             Psicology::create($request->all());
-            return redirect()->route('admin.users.show',$id)->with('success','La descripcion de la Psicología fue creada');
+            return redirect()->route('admin.users.show',$id)->with('success','Descripção criada');
 
         }
     }

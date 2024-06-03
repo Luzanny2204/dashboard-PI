@@ -40,9 +40,10 @@ class PhysiotherapistsCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'consultation_date.required' => 'El Fecha de la consulta de la fisioterapia es obligatorio',
-            'description.required' => 'La descripción de la fisioterapia es obligatorio',
-            'user_id.required' => 'El jugador es obligatorio',
+            'consultation_date.required' => 'A data da consulta de fisioterapia é obrigatória',
+            'description.required' => 'A descrição da fisioterapia é obrigatória',
+            'user_id.required' => 'O jogador é obrigatório',
         ];
     }
+    
 }

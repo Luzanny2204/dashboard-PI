@@ -42,16 +42,16 @@ class MenstrualcalendarsCreateRequest extends FormRequest
             'user_id' => 'Usuario',
         ];
     }
-
     public function messages()
     {
         return [
-            'last_period' => 'El campo de Último periodo es obligatorio',
-            'duration' => 'El campo de Duración es obligatorio',
-            'symptoms' => 'El campo de Sintomas es obligatorio',
-            'cervical_flux' => 'El campo de Flujo cervical es obligatorio',
-            'sexual_activity' => 'El campo de Actividad sexual es obligatorio',
-            'user_id' => 'El campo de Usuario es obligatorio',
+            'last_period.required' => 'O campo de Último período é obrigatório',
+            'duration.required' => 'O campo de Duração é obrigatório',
+            'symptoms.required' => 'O campo de Sintomas é obrigatório',
+            'cervical_flux.required' => 'O campo de Fluxo cervical é obrigatório',
+            'sexual_activity.required' => 'O campo de Atividade sexual é obrigatório',
+            'user_id.required' => 'O campo de Usuário é obrigatório',
         ];
     }
+    
 }

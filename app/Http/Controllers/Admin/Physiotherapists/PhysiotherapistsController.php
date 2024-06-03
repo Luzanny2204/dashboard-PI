@@ -36,7 +36,7 @@ class PhysiotherapistsController extends Controller
     public function store(PhysiotherapistsCreateRequest $request)
     {
         Physiotherapist::create($request->all());
-        return redirect()->route('admin.physiotherapists.index')->with('success', 'La fisioterapia se creo correctamente');
+        return redirect()->route('admin.physiotherapists.index')->with('success', 'Descripção criada');
     }
 
    
@@ -58,13 +58,13 @@ class PhysiotherapistsController extends Controller
     public function update(PhysiotherapistsCreateRequest $request, Physiotherapist $physiotherapist)
     {
         $physiotherapist->update($request->all());
-        return redirect()->route('admin.physiotherapists.index')->with('edit', 'La fisioterapia se edito correctamente');
+        return redirect()->route('admin.physiotherapists.index')->with('edit', 'Descripção editada');
     }
 
    
     public function destroy(Physiotherapist $physiotherapist)
     {
         $physiotherapist->delete();
-        return redirect()->route('admin.physiotherapists.index')->with('delete', 'La fisioterapia se elimino correctamente');
+        return redirect()->route('admin.physiotherapists.index')->with('delete', 'Descripção deletada');
     }
 }

@@ -38,8 +38,9 @@ class PositionsCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre de la posición es obligatorio',
-            'state_id.required' => 'El estado es obligatorio',
+            'name.required' => 'O nome da posição é obrigatório',
+            'state_id.required' => 'O estado é obrigatório',
         ];
     }
+    
 }

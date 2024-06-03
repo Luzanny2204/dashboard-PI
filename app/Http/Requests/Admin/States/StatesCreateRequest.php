@@ -36,7 +36,7 @@ class StatesCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre del estado es obligatorio',
+            'name.required' => 'O nome do estado é obrigatorio',
         ];
     }
 }

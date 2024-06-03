@@ -37,7 +37,7 @@ class PositionsController extends Controller
     public function store(PositionsCreateRequest $request)
     {
         Position::create($request->all());
-        return redirect()->route('admin.positions.index')->with('success', 'La posición se a creado correctamente.');
+        return redirect()->route('admin.positions.index')->with('success', 'A posição foi criada');
     }
 
   
@@ -56,7 +56,7 @@ class PositionsController extends Controller
     public function update(PositionsCreateRequest $request, Position $position)
     {
         $position->update($request->all());
-        return redirect()->route('admin.positions.index')->with('edit', 'La posión se a editado correctamente.');
+        return redirect()->route('admin.positions.index')->with('edit', 'A posição foi editada');
     }
 
     
@@ -64,12 +64,12 @@ class PositionsController extends Controller
     {
         try {
             $position->delete();
-            return redirect()->route('admin.positions.index')->with('delete', 'La posición se ha eliminado correctamente.');
+            return redirect()->route('admin.positions.index')->with('delete', 'A posição foi deletada');
         } catch (QueryException $e) {
             if ($e->getCode() == 23000) { 
-                return redirect()->route('admin.positions.index')->with('info', 'No es posible eliminar la posición porque está asociada a uno o más usuarios.');
+                return redirect()->route('admin.positions.index')->with('info', 'Não é possível excluir a posição porque está associada a um ou mais usuários.');
             }
-            return redirect()->route('admin.positions.index')->with('info', 'Ocurrió un error al intentar eliminar la posición.');
+            return redirect()->route('admin.positions.index')->with('info', 'Ocorreu um erro ao tentar excluir a posição');
         }
     }
 }

@@ -150,7 +150,7 @@
     <li class="nav-item">
       <a class="nav-link " href="{{route('admin.users.index')}}">
         <i class="bi bi-person"></i>
-        <span>@if(\Auth::user()->hasRole('Administrador')) Usuários @elseif(\Auth::user()->hasRole('Treinador')) Jogadores @endif</span>
+        <span>@if(\Auth::user()->hasRole('Administrador')) Usuários @elseif(\Auth::user()->hasRole('Treinador') || \Auth::user()->hasRole('Nutricionista') || \Auth::user()->hasRole('Psicologos')) Jogadores @endif</span>
       </a>
     </li>
     @endcan

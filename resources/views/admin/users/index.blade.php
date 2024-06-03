@@ -20,7 +20,7 @@
             @endcan
         </div>
 
-        <div class="col-12">
+        <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-body pt-3">
                     <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
@@ -44,7 +44,7 @@
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Jogadores</button>
                             </li>
                         @endif
-                        @if(\Auth::user()->hasRole('Nutricionista')||\Auth::user()->hasRole('Psicólogos'))
+                        @if(\Auth::user()->hasRole('Nutricionista')||\Auth::user()->hasRole('Psicologos'))
 
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Jogadores</button>
@@ -467,7 +467,7 @@
                                 </div>
                             </div>
                         @endif
-                        @if(\Auth::user()->hasRole('Nutricionista')||\Auth::user()->hasRole('Psicólogos'))
+                        @if(\Auth::user()->hasRole('Nutricionista')||\Auth::user()->hasRole('Psicologos'))
 
                         <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit" role="tabpanel">
                             <div class="table-responsive">
@@ -543,15 +543,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-12 mt-5">
-            <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                    
-                </div>
-            </div>
-        </div>
-
     </div>
 </section>
 

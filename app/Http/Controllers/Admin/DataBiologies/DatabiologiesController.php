@@ -26,7 +26,9 @@ class DatabiologiesController extends Controller
 
     public function create()
     {
-        $users = User::all();
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('roles.id', 6);
+        })->get();
         return view('admin.databiologies.create',compact('users'));
     }
 
@@ -52,7 +54,9 @@ class DatabiologiesController extends Controller
 
     public function edit(Databiology $databiology)
     {
-        $users = User::all();
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('roles.id', 6);
+        })->get();
         return view('admin.databiologies.edit',compact('databiology','users'));
     }
 

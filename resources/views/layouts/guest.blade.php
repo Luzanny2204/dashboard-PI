@@ -167,7 +167,7 @@
   </div>
 </div>
 
-<div class="site-section" style="background-color: #ee1e46; padding: 180px;">
+<div class="site-section" style="background-color: #558AE6; padding: 180px;">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">

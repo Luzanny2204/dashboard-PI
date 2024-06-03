@@ -66,26 +66,25 @@
                             <input type="password" name="password" class="form-control" id="yourPassword" required>
                         </div>
 
-
                         <div class="col-12">
-                            <label for="weight" class="form-label">weight</label>
+                            <label for="weight" class="form-label">Peso</label>
                             <input type="text" name="weight" class="form-control" id="weight" required>
                         </div>
 
                         <div class="col-12">
-                            <label for="height" class="form-label">height</label>
+                            <label for="height" class="form-label">Altura</label>
                             <input type="text" name="height" class="form-control" id="height" required>
                         </div>
 
                         <div class="col-12">
-                            <label for="phone" class="form-label">phone</label>
+                            <label for="phone" class="form-label">Telefone</label>
                             <input type="text" name="phone" class="form-control" id="phone" required>
                         </div>
 
                         <div class="col-12">
-                            <label for="position_id" class="form-label">Position</label>
+                            <label for="position_id" class="form-label">Posição</label>
                             <select name="position_id" class="form-select" id="position_id" required>
-                                <option value="" disabled selected>Selecione seu posicion</option>
+                                <option value="" disabled selected>Selecione sua posição</option>
                                 @foreach($positions as $position)
                                   <option value="{{$position->id}}">{{$position->name}}</option>
                                 @endforeach
